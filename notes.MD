@@ -2,8 +2,12 @@
 
 [Mastermind](https://www.mastermind.ac/courses/take/iniciacion-python)
 
-## Primeros pasos
+### Instalar pycharm necesario para el curso 
+```bash
+pacman -S pycharm-community-edition
+```
 
-### Hola
+### Jugando con la consola
 
-### Qué es Python y para que sirve?
+
+
