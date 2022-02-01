@@ -1,8 +1,9 @@
-#Aprende a programan con Python 
+# Aprende a programan con Python
+
 [Mastermind](https://www.mastermind.ac/courses/take/iniciacion-python)
 
-##Primeros pasos
+## Primeros pasos
 
-###Hola
+### Hola
 
 ### Qué es Python y para que sirve?
