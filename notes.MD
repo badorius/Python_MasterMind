@@ -4,7 +4,7 @@
 ```bash
 pacman -S pycharm-community-edition
 ```
-
+___
 # Input y Output
 - Creamos primero nuevo proyecto en PyCharm, verificamos el interprete que sea el correcto en settings.
 - Nombre del proyecto PrimerPrograma
