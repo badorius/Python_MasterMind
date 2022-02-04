@@ -169,5 +169,7 @@ if (25 <= edad <=35 and tipo_de_carnet == "E") or edad <= 10 or (edad >= 65 and 
 else:
     print("No cumple los requerimientos para obtener el descuento")
 ````
+>Ejercicios/descuento_zoo.py
+
 
 
