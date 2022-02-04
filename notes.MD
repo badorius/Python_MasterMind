@@ -100,3 +100,60 @@ euro=float(libra*1.19)
 #Imprimimos el resultado utilizando format.
 print("{} Libras son {} Euros".format(libra, euro))
 ````
+
+---
+#ESTRUCTURAS DE CONTROL
+
+Ejemplos estructuras de control con if or == !=
+
+```python
+print("Me voy a la cocina")
+print("Abro la nevera")
+
+hay_leche = input("Hay leche en la nevera (s/n): ")
+hay_colacao = input("Hay colacao en la nevera (s/n): ")
+
+if hay_leche != "s" or hay_colacao != "s":
+    print("Voy al super a comprar.")
+    if hay_leche != "s":
+        print ("Compro leche")
+    if hay_colacao != "s":
+        print ("Compro colacao")
+
+print("Ponemos la leche en el vaso")
+print("Ponemos la colacao en el vaso")
+print("Mezclamos")
+
+# https://www.youtube.com/watch?v=SsoOG6ZeyUI&ab_channel=ChristianNyffenegger
+```
+>Ejercicios/Preparacion_Colacao.py
+
+Ejercico práctico. Programa donde partiendo de un número definido en una variable del programa, el usuario deberá introducir un número para adivinar el que hay en la variable, si el usuario acierta el número, le damos la enhorabuena, si no salimos.
+
+```python
+import random
+random_number = random.randint(1,5)
+system_password = "Joshua"
+try_number=1
+try_max=3
+
+print("[WOPR] Hola serñor Falken, cuanto tiempo!!!")
+print("[WOPR] Le apetece jugar a un juego?")
+print("[WOPR] Adivine un número del 1 al 5 para conseguir la contraseña de acceso al sistema WOPR,"
+      "usted tiene un máximo de {} intentos.".format(try_number))
+user_number=int(input("[WOPR] Introduzca un número del 1 al 5: " ))
+
+while user_number != random_number and try_number < try_max:
+    print("[WOPR] ERROR!!! ERROR!!! ERROR!!!")
+    print("[WOPR] El número introducido no es correcto, numero de intentos fallidos: {}".format(try_number))
+    user_number = int(input("[WOPR] Introduzca un número del 1 al 5: "))
+    try_number = try_number + 1
+print(try_number, try_max)
+if try_number < try_max:
+    print("[WOPR] Enhorabuena Señor Falken, el número introducido {} coincide con el número del sistema {}".format(int(user_number), int(random_number)))
+    print("[WOPR] La contraseña al sistema es: " + system_password)
+    print("[WOPR]: ~ root#_")
+else:
+    print("[WOPR] Lo siento Señor Falken, useted ha superado el número máximo de intentos.")
+```
+>Ejercicios/adivina_el_numero.py
