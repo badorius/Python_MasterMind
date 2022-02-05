@@ -32,7 +32,8 @@ print ("El número menor es:" + str(min(numero1, numero2, numero3)))
 Con triple doble comillas creamos comentario en bloque, con # creamos comentario de línea
 """
 ```
->Encontraremos este programa en PrimerPrograma/primerprograma.py*
+>Ejercicios/[primerprograma.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/primerprograma.py)
+
 ___
 # Corrigiendo tu primer programa
 
@@ -51,11 +52,11 @@ Para concatenar string con int, una de las maneras sería:
 >>>
 ```
 ```.format``` es lo que se conoce como método, que veremos más adelante. Vendría a ser como una función,  un comando que se ejecuta de esa string en este caso del número 5
-````python
+```python
 >>> "asdf {} {}".format(1, 5)
 'asdf 1 5'
 >>>
-````
+```
 Llamamos al método format del string, asdf con el fin de concatenar int con str.
 Modificamos el primerprograma.py concatenando con el format:
 ```python
@@ -81,7 +82,6 @@ Como ejercicio vamos a realizar dos programas
 - Libra £ a Euro €. En estos momentos 1 British Pound és igual a
 1,19 EUR L*1,19=C
 
->Ejercicios/FahrenheitToCelsius.py
 ```python
 #Asignamos el valor fahrenheit a la variable fahren mediante input, devolviendo un float.
 fahren=float(input("Introduce el valor en fahrenheit para ser convertido a Celsius: "))
@@ -90,8 +90,9 @@ celsi=float((fahren-32)*5/9)
 #Imprimimos el resultado utilizando format.
 print("{} ℉ son {} ℃".format(fahren, celsi))
 ```
->Ejercicios/LibraToEuro.py
-````python
+>Ejercicios/[FahrenheitToCelsius.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/FahrenheitToCelsius.py)
+
+```python
 #Libra £ a Euro €
 #Asignamos el valor Libra a la variable libra mediante input, devolviendo un float.
 libra=float(input("Introduce el valor en Libras para ser convertido a Euros: "))
@@ -99,7 +100,8 @@ libra=float(input("Introduce el valor en Libras para ser convertido a Euros: "))
 euro=float(libra*1.19)
 #Imprimimos el resultado utilizando format.
 print("{} Libras son {} Euros".format(libra, euro))
-````
+```
+>Ejercicios/[LibraToEuro.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/LibraToEuro.py)
 
 ---
 #ESTRUCTURAS DE CONTROL
@@ -126,7 +128,7 @@ print("Mezclamos")
 
 # https://www.youtube.com/watch?v=SsoOG6ZeyUI&ab_channel=ChristianNyffenegger
 ```
->Ejercicios/Preparacion_Colacao.py
+>Ejercicios/[Preparacion_Colacao.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/Preparacion_Colacao.py)
 
 Ejercico práctico. Programa donde partiendo de un número definido en una variable del programa, el usuario deberá introducir un número para adivinar el que hay en la variable, si el usuario acierta el número, le damos la enhorabuena, si no salimos.
 
@@ -156,11 +158,12 @@ if try_number < try_max:
 else:
     print("[WOPR] Lo siento Señor Falken, useted ha superado el número máximo de intentos.")
 ```
->Ejercicios/adivina_el_numero.py
+>Ejercicios/[adivina_el_numero.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/adivina_el_numero.py)
+
 ___
 #La lógica boolean 
 Ejemplos de lógica booleana con ejercicio de descuento zoo, según edad y carnet
-````python
+```python
 edad = int(input("Introduzca su edad: "))
 tipo_de_carnet = input("Introduzca su tipo de carnet (E Estudiante / F Familia Numerosa / P Pensionista / N Nada: ")
 descuento = 25
@@ -168,8 +171,111 @@ if (25 <= edad <=35 and tipo_de_carnet == "E") or edad <= 10 or (edad >= 65 and 
     print("Enhorabuena, se le aplica un {}% de descuento".format(descuento))
 else:
     print("No cumple los requerimientos para obtener el descuento")
-````
->Ejercicios/descuento_zoo.py
+```
+>Ejercicios/[descuento_zoo.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/descuento_zoo.py)
+---
+#Tipos de datos y otras aclaraciones
+Con la función **type()** podemos preguntar al intérprete de python que tipo de dato es el que pasamos por parámetro:
+```python
+>>> type(14)
+<class 'int'>
+>>> type(4.2)
+<class 'float'>
+>>> type("hola")
+<class 'str'>
+>>> type(True)
+<class 'bool'>
+>>> type(False)
+<class 'bool'>
+>>> type(None)
+<class 'NoneType'>
+>>>
+>>> 4/3
+1.3333333333333333
+>>> 4%3
+1
+>>>
+```
+>Cuando algo no devuelve valor es de tipo None.
 
+>4 Dividido entre 3 (4/3) es i gual a 1.3 y me sobra una.
 
+> 4%3 -> Me sobra una.
+
+También tenemos tipo de datos compuestos como los de clase list:
+```python
+>>> a = [1, 2, 3, 4]
+>>> type (a)
+<class 'list'>
+>>>
+```
+De clase diccionario:
+```python
+>>> type (a)
+<class 'dict'>
+>>>
+```
+De clase tuplas:
+```python
+>>> a = (2, 3)
+>>> type (a)
+<class 'tuple'>
+>>>
+```
+Más adelante entraremos con mas detalle con las estructuras de datos.
+De momento trabajaremos con datos escalares, escalares significa que solo tiene un valor, no es una lista de valores, ni una matriz de valores, ni una estructura de valores tridimensional.
+Entonces por ahora tenemos integer float string boolean y tipo none.
+En python podemos convertir los datos de un tipo a otro, eso se llama casteo o cast, conversión de tipo.
+Se puede hacer de varias maneras:
+```python
+>>> 2 + 2.0
+4.0
+>>> float(2)
+2.0
+>>> int(2.0)
+2
+>>>
+```
+### Variables 
+Las variables deben seguir una nomenclatura conocida como underscore 
+- En python las variables siempre empiezan por minúscula.
+- No pueden existir espacions en el nombre, estos deben ser substituidos por underscore _
+- Se recomienda que el nombre de la variable sea descriptivo de lo que representa.
+
+Ejemplo: ```coche_de_un_amigo```
+
+### Comentarios
+Los comentarios son muy importantes para poder entender el código. Una línea de comentario se realiza con un #
+```python
+#Esto es un comentario de línea en python
+```
+Si queremos comentar un bloque en python, lo haremos abriendo y cerrando el bloque con """
+```python
+"""Esto es un bloque
+que contiene varias líneas
+y queremos dejarlo como comentario 
+"""
+```
+### Indentación python
+A diferencia del lenguaje C donde un bloque lo abrimos y cerramos con corchetes {} en python se hace con los : y el tab. Python confía que abrimos y cerramos un bloque solo con la indentación, por este motivo es muy importante
+
+Ejemplo C:
+```shell
+if (condicion) {
+  Instrucción 1;
+  Instrucción 2;
+  Instrucción n;
+}
+  else {
+    Instrucción A;
+    Instrucción B;
+  }
+```
+Ejemplo python:
+```python
+if (condicion):
+    Instrucción 1
+else:
+    instrucción 2
+```
 
