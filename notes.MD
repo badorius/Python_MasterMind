@@ -278,4 +278,24 @@ if (condicion):
 else:
     instrucción 2
 ```
+---
+# Test sobre quesos
+Realizaremos una encuesta para ver con detalle el if.
+Antes comentaremos un par de notas de interés en el código.
+Con la función ```len()``` obtenemos el número de caracteres de un string.
+Esto nos puede ser de utiidad como veremos en la quiz para hacer subrayados simple de strings. 
 
+Ejemplo subrayado simple con len()
+```python
+titulo = "Biernvenido al Test sobre el queso"
+print("\n" + titulo + "\n" + "-" * len(titulo) + "\n")
+```
+Para poder hacer un print de un bloque de texto, python necesita que esté todo en úna línea, pero si nosotros queremos mantener la estructura de tabulación dentro del código, lo podemos hacer con triple doble comilla """
+Ejemplo:
+```python
+opcion = input("""Pregunta 1: que haces cuando ves una tabla de quesos?
+A - Salgo corriendo.
+B - Pruebo una de los quesos o incluso varios.
+C - No puedo exitar devorarla
+""")
+```
