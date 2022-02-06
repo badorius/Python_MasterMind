@@ -104,7 +104,7 @@ print("{} Libras son {} Euros".format(libra, euro))
 >Ejercicios/[LibraToEuro.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/LibraToEuro.py)
 
 ---
-#ESTRUCTURAS DE CONTROL
+# ESTRUCTURAS DE CONTROL
 
 Ejemplos estructuras de control con if or == !=
 
@@ -161,7 +161,7 @@ else:
 >Ejercicios/[adivina_el_numero.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/adivina_el_numero.py)
 
 ___
-#La lógica boolean 
+# La lógica boolean 
 Ejemplos de lógica booleana con ejercicio de descuento zoo, según edad y carnet
 ```python
 edad = int(input("Introduzca su edad: "))
@@ -174,7 +174,7 @@ else:
 ```
 >Ejercicios/[descuento_zoo.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/descuento_zoo.py)
 ---
-#Tipos de datos y otras aclaraciones
+# Tipos de datos y otras aclaraciones
 Con la función **type()** podemos preguntar al intérprete de python que tipo de dato es el que pasamos por parámetro:
 ```python
 >>> type(14)
