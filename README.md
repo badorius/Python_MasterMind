@@ -1,5 +1,4 @@
 
-[Mastermind](https://www.mastermind.ac/courses/take/iniciacion-python)
 # Instalar pycharm necesario para el curso 
 ```bash
 pacman -S pycharm-community-edition
