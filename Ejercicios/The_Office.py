@@ -135,19 +135,19 @@ if opcion == "0":
         time.sleep(1)
         borrarpantalla()
         banner_print()
-        opcion = menu_print(opciones_menu)
+        opcion = menu_print(menu, opciones_menu)
 
 
 elif opcion == "1":
-    gestion_usuarios()
+    print()
 elif opcion == "2" :
-    gestion_servicios()
+    print()
 elif opcion == "3":
-    gestion_servicios()
+    print()
 elif opcion == "4":
-    gestion_servicios()
+    print()
 elif opcion == "5":
-    apagar_sistema()
+    print()
 else:
     print("Opción incorrecta!")
     time.sleep(1)
