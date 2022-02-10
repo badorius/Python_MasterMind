@@ -17,6 +17,7 @@ empleado_id = random.randint(1, 1000000)
 correos_pendientes = random.randint(1, 1000000)
 correos_usuarios = random.randint(100000, 1000000000)
 out_of_office = False
+usuario_despedido = False
 #############################
 # FUNCTIONS
 #############################
@@ -76,7 +77,7 @@ def banner_print():
     print()
 # MENU 1
 def menu_print(titulo, opciones_menu_principal):
-    mensaje_principal = "█ {} // {} // {} // [THE OFFICE] █".format(titulo, empleado_id, today)
+    mensaje_principal = "█ {} // ID: {} // DATE: {} // [THE OFFICE] █".format(titulo, empleado_id, today)
     print("█" * len(mensaje_principal))
     print(mensaje_principal)
     print("█" * len(mensaje_principal))
@@ -91,21 +92,67 @@ def menu_print(titulo, opciones_menu_principal):
     return opciones_menu_principal
 
 def despedido():
+    global usuario_despedido
+    usuario_despedido = True
     print("Usted ha sido nominado empleado del mes (malo). Recoja sus cosas y pase por RRHH, le están esperando."
           "Gracias por su servicio.")
     input("Presione [ENTER] tecla para continuar...")
     loading_system("Shutting down ", "DONE")
+    print("""┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼
+███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀
+██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼█┼┼┼██┼██┼┼┼
+██┼┼┼▄▄▄┼██▄▄▄▄▄██┼██┼┼┼▀┼┼┼██┼██▀▀▀
+██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██┼┼┼
+███▄▄▄██┼██┼┼┼┼┼██┼██┼┼┼┼┼┼┼██┼██▄▄▄
+┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼
+███▀▀▀███┼▀███┼┼██▀┼██▀▀▀┼██▀▀▀▀██▄┼
+██┼┼┼┼┼██┼┼┼██┼┼██┼┼██┼┼┼┼██┼┼┼┼┼██┼
+██┼┼┼┼┼██┼┼┼██┼┼██┼┼██▀▀▀┼██▄▄▄▄▄▀▀┼
+██┼┼┼┼┼██┼┼┼██┼┼█▀┼┼██┼┼┼┼██┼┼┼┼┼██┼
+███▄▄▄███┼┼┼─▀█▀┼┼─┼██▄▄▄┼██┼┼┼┼┼██▄
+┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼██┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼██┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼████▄┼┼┼▄▄▄▄▄▄▄┼┼┼▄████┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼┼▀▀█▄█████████▄█▀▀┼┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼┼┼┼█████████████┼┼┼┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼┼┼┼██▀▀▀███▀▀▀██┼┼┼┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼┼┼┼██┼┼┼███┼┼┼██┼┼┼┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼┼┼┼█████▀▄▀█████┼┼┼┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼┼┼┼┼███████████┼┼┼┼┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼▄▄▄██┼┼█▀█▀█┼┼██▄▄▄┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼▀▀██┼┼┼┼┼┼┼┼┼┼┼██▀▀┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼┼┼▀▀┼┼┼┼┼┼┼┼┼┼┼▀▀┼┼┼┼┼┼┼┼┼┼┼
+┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼""")
     exit(1)
 
 def corporatemenu():
     menu = "CORPORATE MENU"
-    opciones_menu = ["Leer correos pendientes", "Gestion de usuarios", "Getion de servicios",
+    opciones_menu = ["Corporate mail", "Gestion de usuarios", "Getion de servicios",
                      "Deeploy TheOffice software", "Iniciar shell", "Apagar sistema"]
     opcion = menu_print(menu, opciones_menu)
+    if opcion == "0":
+        opcion_mail = corporatemail()
+    elif opcion == "1":
+        print()
+    elif opcion == "2":
+        print()
+    elif opcion == "3":
+        print()
+    elif opcion == "4":
+        print()
+    elif opcion == "5":
+        print()
+    else:
+        print("Opción incorrecta!")
+        time.sleep(1)
+        borrarpantalla()
+        banner_print()
+        opcion = menu_print(opciones_menu)
     return opcion
 def corporatemail():
     global correos_usuarios
-    menu = "CORPORATE MAIL"
+    global correos_pendientes
+    menu = "CORPORATE MAIL // " + str(correos_pendientes) + " Correos no leidos"
     opciones_menu = ["Marcar todos los correos como leidos", "Borrar todos los correos", "Borrar todos los correos de todo los usuarios",
                      "Out of office", "salir"]
     opcion_mail = menu_print(menu, opciones_menu)
@@ -118,9 +165,11 @@ def corporatemail():
         despedido()
     elif opcion_mail == "2":
         print("{} correos borrados".format(correos_usuarios))
+        correos_pendientes = 0
         correos_usuarios = 0
         print("{} correos en total en todo CORPORATE MAIL".format(correos_usuarios))
         input("Presione [ENTER] tecla para continuar...")
+        opcion = corporatemenu()
 
     elif opcion_mail == "3":
         global out_of_office
@@ -135,6 +184,7 @@ def corporatemail():
               "Saludos cordiales,\n"
               "BOFH")
         out_of_office = True
+        opcion = corporatemenu()
     elif opcion_mail == "4":
         opcion = corporatemenu()
     else:
@@ -152,28 +202,10 @@ def corporatemail():
 #loading_system("Starting", "OK")
 borrarpantalla()
 banner_print()
-
 opcion = corporatemenu()
 
-if opcion == "0":
-    opcion_mail = corporatemail()
-    if correos_usuarios != 0 or out_of_office !=True:
-        despedido()
-elif opcion == "1":
-    print()
-elif opcion == "2" :
-    print()
-elif opcion == "3":
-    print()
-elif opcion == "4":
-    print()
-elif opcion == "5":
-    print()
-else:
-    print("Opción incorrecta!")
-    time.sleep(1)
-    borrarpantalla()
-    banner_print()
-    opcion = menu_print(opciones_menu)
+if correos_usuarios != 0 and out_of_office != True:
+    despedido()
 
-print(opcion)
+
+
