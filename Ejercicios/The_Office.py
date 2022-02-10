@@ -15,9 +15,8 @@ from datetime import date
 today = date.today()
 empleado_id = random.randint(1, 1000000)
 correos_pendientes = random.randint(1, 1000000)
-
-correos_pendientes = 5
-
+correos_usuarios = random.randint(100000, 1000000000)
+out_of_office = False
 #############################
 # FUNCTIONS
 #############################
@@ -98,20 +97,13 @@ def despedido():
     loading_system("Shutting down ", "DONE")
     exit(1)
 
-#############################
-# MAIN
-#############################
-
-#loading_system("Starting", "OK")
-borrarpantalla()
-banner_print()
-
-
-menu = "CORPORATE MENU"
-opciones_menu = ["Leer correos pendientes", "Gestion de usuarios", "Getion de servicios", "Deeploy TheOffice software", "Iniciar shell", "Apagar sistema"]
-opcion = menu_print(menu, opciones_menu)
-
-if opcion == "0":
+def corporatemenu():
+    menu = "CORPORATE MENU"
+    opciones_menu = ["Leer correos pendientes", "Gestion de usuarios", "Getion de servicios",
+                     "Deeploy TheOffice software", "Iniciar shell", "Apagar sistema"]
+    opcion = menu_print(menu, opciones_menu)
+    return opcion
+def corporatemail():
     menu = "CORPORATE MAIL"
     opciones_menu = ["Marcar todos los correos como leidos", "Borrar todos los correos", "Borrar todos los correos de todo los usuarios",
                      "Out of office", "salir"]
@@ -121,23 +113,50 @@ if opcion == "0":
         print("{} correos marcados como leidos".format(correos_pendientes))
         despedido()
     elif opcion_mail== "1":
-        print("{} correos marcados borrados".format(correos_pendientes))
+        print("{} correos borrados".format(correos_pendientes))
         despedido()
-
     elif opcion_mail == "2":
-        gestion_servicios()
+        print("{} correos borrados".format(correos_usuarios))
+        correos_usuarios = 0
+        print("{} correos en total en todo CORPORATE MAIL".format(correos_usuarios))
+        input("Presione [ENTER] tecla para continuar...")
+
     elif opcion_mail == "3":
-        gestion_servicios()
+        print("Buenos días:\n"
+              "Gracias por su mensaje.\n"
+              "Me encuentro de vacaciones sin acceso al correo electrónico.\n"
+              "Provablemente usted tampoco tenga correo y con mucha suerte no tenga acceso ni al sistema, con lo que este automensaje no tienen ningún sentido.\n"
+              "Le atendería con mucho gusto a partir del día 06/06/6666, pero seguramente no estemos disponibles, mucha suerte.\n"
+              "También puede dirigirse a nuestra herramienta de solución de problemas online:\n"
+              "https://bofh.d00t.org/\n"
+              "Gracias por su comprensión.\n"
+              "Saludos cordiales,\n"
+              "BOFH")
+        out_of_office = True
     elif opcion_mail == "4":
-        gestion_servicios()
+        opcion = corporatemenu()
     else:
         print("Opción incorrecta!")
         time.sleep(1)
         borrarpantalla()
         banner_print()
-        opcion = menu_print(menu, opciones_menu)
+        opcion_mail = menu_print(menu, opciones_menu)
+    return opcion_mail
 
+#############################
+# MAIN
+#############################
 
+#loading_system("Starting", "OK")
+borrarpantalla()
+banner_print()
+
+opcion = corporatemenu()
+
+if opcion == "0":
+    opcion_mail = corporatemail()
+    if correos_usuarios != 0 or out_of_office !=True:
+        despedido()
 elif opcion == "1":
     print()
 elif opcion == "2" :
