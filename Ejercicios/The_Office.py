@@ -5,7 +5,7 @@ THE OFFICE GAME/// toda semejanza con la realidad es pura coincidencia by BADORI
 # IMPORT LIB
 #############################
 
-import sys, time, random, os
+import sys, time, random, os, getpass
 from datetime import date
 
 #############################
@@ -18,6 +18,9 @@ correos_pendientes = random.randint(1, 1000000)
 correos_usuarios = random.randint(100000, 1000000000)
 out_of_office = False
 usuario_despedido = False
+usuarios_activos = random.randint(1, 1000000)
+mi_usuario = "falken"
+mi_password = "joshua"
 #############################
 # FUNCTIONS
 #############################
@@ -73,7 +76,7 @@ def banner_print():
     print(banner)
     print("█████████████████████████████████████████████████████████████████████")
     print()
-    print("Buenos días empleado {}, hoy es {}, esperemos que sea un gran día para todos.\n ".format(str(empleado_id), today))
+    print("Buenos días Sr {}, empleado ID {}, hoy es {}, esperemos que sea un gran día para todos.\n ".format(mi_usuario, str(empleado_id), today))
     print()
 # MENU 1
 def menu_print(titulo, opciones_menu_principal):
@@ -127,27 +130,33 @@ def despedido():
 
 def corporatemenu():
     menu = "CORPORATE MENU"
-    opciones_menu = ["Corporate mail", "Gestion de usuarios", "Getion de servicios",
-                     "Deeploy TheOffice software", "Iniciar shell", "Apagar sistema"]
+    opciones_menu = ["Corporate mail", "User Management", "Service management",
+                     "Deploy The Office software", "Run shell", "Shutdown system"]
     opcion = menu_print(menu, opciones_menu)
+    #Corporate mail
     if opcion == "0":
         opcion_mail = corporatemail()
+    #User Management
     elif opcion == "1":
-        print()
+        opcion_umanagement=user_management()
+    #Service management
     elif opcion == "2":
-        print()
+        opcion_smanagement=service_management()
+    #Deploy The Office Software
     elif opcion == "3":
-        print()
+        opcion_office_deploy=office_deploy()
+    #Run shell
     elif opcion == "4":
-        print()
+        opcion_run_shell=run_shell()
+    #Shutdown system
     elif opcion == "5":
-        print()
+        opcion_sytem_shutdown=system_shutdown()
     else:
         print("Opción incorrecta!")
         time.sleep(1)
         borrarpantalla()
         banner_print()
-        opcion = menu_print(opciones_menu)
+        opcion = corporatemenu()
     return opcion
 def corporatemail():
     global correos_usuarios
@@ -169,7 +178,8 @@ def corporatemail():
         correos_usuarios = 0
         print("{} correos en total en todo CORPORATE MAIL".format(correos_usuarios))
         input("Presione [ENTER] tecla para continuar...")
-        opcion = corporatemenu()
+        menu = "CORPORATE MAIL // " + str(correos_pendientes) + " Correos no leidos"
+        opcion = corporatemail()
 
     elif opcion_mail == "3":
         global out_of_office
@@ -184,7 +194,7 @@ def corporatemail():
               "Saludos cordiales,\n"
               "BOFH")
         out_of_office = True
-        opcion = corporatemenu()
+        opcion = corporatemail()
     elif opcion_mail == "4":
         opcion = corporatemenu()
     else:
@@ -195,16 +205,86 @@ def corporatemail():
         opcion_mail = menu_print(menu, opciones_menu)
     return opcion_mail
 
+def user_management():
+    global usuarios_activos
+    global mi_password
+    menu = "USER MANAGEMENT // " + str(usuarios_activos) + " Usuarios activos en el system"
+    opciones_menu = ["Modificar mi password", "Modificar password de otro usuario", "Borrar un usuario",
+                     "borrar todos los usuarios", "salir"]
+    opcion_user_management = menu_print(menu, opciones_menu)
+
+    if opcion_user_management == "0":
+        global mi_password
+        mi_password_1 = mi_password
+        mi_password_2 = mi_password
+        actual_password = input("Hola Señor Falken, Introduzca su password actual: ")
+        if actual_password == mi_password:
+            mi_password_1 = getpass.getpass("Introduzca su nuevo password: ")
+            mi_password_2 = getpass.getpass("Introduzca otra vez su nuevo password: ")
+            if mi_password_1 == mi_password_2:
+                mi_password = mi_password_1
+                print("Su password ha sido modificado con éxito.")
+                input("Presione [ENTER] para continuar: ")
+                opcion_umanagement = user_management()
+        print("Password Incorrecto, el sistema reportará su incompetencia al departamento oportuno.")
+        despedido()
+
+    elif opcion_user_management == "1":
+        luser = input("Introduzca el logon name del usuario: ")
+        su_password_1 = getpass.getpass("Introduzca el password para el usuario: ")
+        su_password_2 = getpass.getpass("Introduzca otra vez el password para el usuario: ")
+        if su_password_1 == su_password_2:
+            print("El password para el usuario {} ha sido modificado con éxito.".format(luser))
+            input("Presione [ENTER] para continuar: ")
+            opcion_umanagement = user_management()
+        print("Password Incorrecto, el sistema reportará su incompetencia al departamento oportuno.")
+        despedido()
+    elif opcion_user_management == "2":
+        global mi_usuario
+        luser = input("Introduzca el nombre de usuario a elminiar: ")
+        if luser == mi_usuario:
+            print ("No se puede ser más incompetente, has eliminado tu usuario!")
+            despedido()
+        else:
+            print("El usuario {} ha sido eliminado con éxito!".format(luser))
+            input("Presione [ENTER] para continuar: ")
+            opcion_user_management = menu_print(menu, opciones_menu)
+    elif opcion_user_management == "3":
+        uopcion = input ("Esta seguro que quiere eliminar todos los usuarios del sistema a excepción del suyo? [S/N]")
+        if uopcion == "S":
+            print("Todos los usuarios han sido eliminados del sistema (Menos el suyo Sr {}.)".format(mi_usuario))
+            usuarios_activos = 1
+            input("Presione [ENTER] para continuar: ")
+            menu = "USER MANAGEMENT // " + str(usuarios_activos) + " Usuarios activos en el system"
+            opcion_user_management = menu_print(menu, opciones_menu)
+        opcion = user_management()
+    elif opcion_user_management == "4":
+        opcion = corporatemenu()
+    else:
+        print("Opción incorrecta!")
+        time.sleep(1)
+        borrarpantalla()
+        banner_print()
+        opcion_user_management = user_management()
+    return opcion_user_management
+def service_management():
+    print()
+def office_deploy():
+    print()
+def run_shell():
+    print()
+def system_shutdown():
+    print()
 #############################
 # MAIN
 #############################
 
-#loading_system("Starting", "OK")
+loading_system("Starting", "OK")
 borrarpantalla()
 banner_print()
 opcion = corporatemenu()
 
-if correos_usuarios != 0 and out_of_office != True:
+if correos_usuarios != 0 and out_of_office != True and usuarios_activos !=1:
     despedido()
 
 
