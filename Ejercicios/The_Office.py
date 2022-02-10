@@ -104,6 +104,7 @@ def corporatemenu():
     opcion = menu_print(menu, opciones_menu)
     return opcion
 def corporatemail():
+    global correos_usuarios
     menu = "CORPORATE MAIL"
     opciones_menu = ["Marcar todos los correos como leidos", "Borrar todos los correos", "Borrar todos los correos de todo los usuarios",
                      "Out of office", "salir"]
@@ -122,6 +123,7 @@ def corporatemail():
         input("Presione [ENTER] tecla para continuar...")
 
     elif opcion_mail == "3":
+        global out_of_office
         print("Buenos días:\n"
               "Gracias por su mensaje.\n"
               "Me encuentro de vacaciones sin acceso al correo electrónico.\n"
