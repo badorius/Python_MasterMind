@@ -9,9 +9,18 @@ import sys, time, random, os, getpass
 from datetime import date
 
 #############################
+# CLASS
+#############################
+class Servicio:
+    nombre = "service"
+    estado = "Enabled"
+    def enable(self):
+        self.estado = "Enabled"
+    def disable(self):
+        self.estado = "Disabled"
+#############################
 # VARS
 #############################
-
 today = date.today()
 empleado_id = random.randint(1, 1000000)
 correos_pendientes = random.randint(1, 1000000)
@@ -19,23 +28,37 @@ correos_usuarios = random.randint(100000, 1000000000)
 out_of_office = False
 usuario_despedido = False
 usuarios_activos = random.randint(1, 1000000)
+lista_servicios = ["NETWORK", "BIND", "SQUID", "MYSQL", "HTTPD", "SSHD", "NFSD", "CUPSD", "DOCKER", "THE OFFICE SOFTWARE"]
+services_status = "enabled"
 mi_usuario = "falken"
 mi_password = "joshua"
+active_services=len(lista_servicios)
+office_version="Prod 2.0.0"
+
+#Instanciamos los objectos antes definidos en la clase
+servicio = [ Servicio() for i in range(len(lista_servicios))]
+#Creamos una lista de objetos servicios con atributo nombre y metodos enable/disable que modifican el atributo estado.
+for count in range(len(lista_servicios)):
+    servicio[count].nombre = lista_servicios[count]
+    #print(servicio[count].nombre, servicio[count].estado)
+   # lista_servicios.append(servicio)
+
 #############################
 # FUNCTIONS
 #############################
 
 #Printing starting services funct
 def loading_system(statusa, statusb):
+    global lista_servicios
     """opcion = input("Hola, estas seguro que quiere jugar a THE OFFICE? [S/N]: ")
     if opcion != "S":
         print("Estas de suerte, hasta la próxima.")
         exit()"""
 
     print(statusa + "services:")
-    servicios = ["NETWORK", "BIND", "SQUID", "MYSQL", "HTTPD", "SSHD", "NFSD", "CUPSD", "DOCKER", "THE OFFICE SOFTWARE"]
-    for n in range(10):
-        mensaje=statusa + " {} service.".format(servicios[n])
+    for n in range(len(lista_servicios)):
+        #mensaje=statusa + " {} service.".format(lista_servicios[n])
+        mensaje=statusa + " {} service.".format(servicio[n].nombre)
         print(mensaje, end="")
 
         #GET STRING LEN TO KEEP OK MESSAGE ON THE SAME POSITION IN THE SCREEN.
@@ -267,10 +290,101 @@ def user_management():
         banner_print()
         opcion_user_management = user_management()
     return opcion_user_management
+
 def service_management():
-    print()
+    global services_status
+    global lista_servicios
+    global servicio
+    global active_services
+    menu = "SERVICE MANAGEMENT // " + str(active_services) + " servicios activos en el sistema"
+    opciones_menu = ["Parar/Desactivar un servicio", "Parar/Desactivar todos los servicios", "salir"]
+    opcion_service_management = menu_print(menu, opciones_menu)
+
+    if opcion_service_management == "0":
+        opcion_servicio=input ("Introduzca el nombre del servicio a parar y desactivar [{}]: ".format (lista_servicios))
+        if opcion_servicio not in lista_servicios:
+            print("Servicio no existe! muy muy mal! DESPEDIDO!")
+            despedido()
+        else:
+            active_services = active_services - 1
+            #indice = servicio.nombre(opcion_servicio)
+            #servicio[indice].disable
+            time.sleep(1)
+            print("Parando servicio {} ....".format(opcion_servicio))
+            print ("El Servicio {} ha sido parado y desactivado.".format(opcion_servicio))
+            input("Presione [ENTER] para continuar: ")
+            menu = "SERVICE MANAGEMENT // " + str(active_services) + " servicios activos en el sistema"
+            opcion_service_management = service_management()
+
+    elif opcion_service_management == "1":
+        uopcion = input("Esta seguro que quiere parar y desactivar todos los servicios del systema? [S/N] ")
+        if uopcion == "S":
+            active_services = 0
+            print("Parando todos los servicios ....")
+            time.sleep(1)
+            print("Todos los servicios han sido parados y desactivados.")
+            input("Presione [ENTER] para continuar: ")
+            menu = "SERVICE MANAGEMENT // " + str(active_services) + " servicios activos en el sistema"
+            opcion_service_management = service_management()
+        input("Presione [ENTER] para continuar: ")
+        menu = "SERVICE MANAGEMENT // " + str(active_services) + " servicios activos en el sistema"
+        opcion_service_management = service_management()
+    elif opcion_service_management == "2":
+        opcion = corporatemenu()
+    else:
+        print("Opción incorrecta!")
+        time.sleep(1)
+        borrarpantalla()
+        banner_print()
+        opcion_user_management = service_management()
+    return opcion_service_management
+
 def office_deploy():
-    print()
+    global office_version
+    menu = "DEPLOY MANAGEMENT // Version actual: " + str(office_version)
+    opciones_menu = ["Desplegar nueva version", "Eliminar software", "salir"]
+    opcion_office_deploy = menu_print(menu, opciones_menu)
+
+    if opcion_office_deploy == "0":
+        aviable_versions=["Prod 1.0.0", "Dev 0.1.0", "Trojan.exe"]
+        user_version = input("Selecciones la versión para subir a producción {}: ".format(aviable_versions))
+
+        if user_version not in aviable_versions:
+            print ("Opción incorrecta!")
+            print("En serio??? Solo tenías que tipear correctamente una de las opciones anteriores! vaya sysadmin!")
+            despedido()
+
+        office_version = user_version
+        print("Deploying version {} to production environment...".format(office_version))
+        time.sleep(1)
+        print("Version {} has been deployed to production environment...".format(office_version))
+        input("Presione [ENTER] para continuar: ")
+        menu = "DEPLOY MANAGEMENT // Version actual: " + str(office_version)
+        opcion_office_deploy=office_deploy()
+
+    elif opcion_office_deploy == "1":
+        uopcion = input("Esta seguro que quiere eliminar todas las versiones del sistema, incluido GIT, backups, etc...? [S/N] ")
+        if uopcion == "S":
+            print("Eliminando todas las versiones ....")
+            time.sleep(1)
+            office_version = "NULL"
+            print("Todas las versiones han sido eliminadas y usted despedido.")
+            input("Presione [ENTER] para continuar: ")
+            despedido()
+        input("Presione [ENTER] para continuar: ")
+        menu = "DEPLOY MANAGEMENT // Version actual: " + str(office_version)
+        opcion_office_deploy=office_deploy()
+    elif opcion_office_deploy == "2":
+        opcion = corporatemenu()
+    else:
+        print("Opción incorrecta!")
+        time.sleep(1)
+        borrarpantalla()
+        banner_print()
+        opcion_office_deploy = office_deploy()
+
+    return opcion_office_deploy
+
 def run_shell():
     print()
 def system_shutdown():
@@ -284,8 +398,10 @@ borrarpantalla()
 banner_print()
 opcion = corporatemenu()
 
-if correos_usuarios != 0 and out_of_office != True and usuarios_activos !=1:
+if correos_usuarios != 0 and out_of_office != True and usuarios_activos !=1 and active_services != 0 and office_version!= Trojan.exe:
     despedido()
+else:
+    print("You WIN!")
 
 
 
