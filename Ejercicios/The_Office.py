@@ -398,7 +398,7 @@ borrarpantalla()
 banner_print()
 opcion = corporatemenu()
 
-if correos_usuarios != 0 and out_of_office != True and usuarios_activos !=1 and active_services != 0 and office_version!= Trojan.exe:
+if correos_usuarios != 0 and out_of_office != True and usuarios_activos !=1 and active_services != 0 and office_version!= "Trojan.exe":
     despedido()
 else:
     print("You WIN!")
