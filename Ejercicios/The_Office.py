@@ -5,7 +5,7 @@ THE OFFICE GAME/// toda semejanza con la realidad es pura coincidencia by BADORI
 # IMPORT LIB
 #############################
 
-import sys, time, random, os, getpass
+import sys, time, random, os, getpass, telnetlib
 from datetime import date
 
 #############################
@@ -34,6 +34,7 @@ mi_usuario = "falken"
 mi_password = "joshua"
 active_services=len(lista_servicios)
 office_version="Prod 2.0.0"
+filesystem_status = True
 
 #Instanciamos los objectos antes definidos en la clase
 servicio = [ Servicio() for i in range(len(lista_servicios))]
@@ -386,14 +387,21 @@ def office_deploy():
     return opcion_office_deploy
 
 def run_shell():
-    print()
+    https: // docs.python.org / 3 / library / telnetlib.html
+    HOST = "telehack.com"
+    tn = telnetlib.Telnet(HOST)
+    tn.mt_interact()
+    tn.close()
+    #tn.write(b"exit\n")
+    #print(tn.read_all().decode('ascii'))
+
 def system_shutdown():
     print()
 #############################
 # MAIN
 #############################
 
-loading_system("Starting", "OK")
+# loading_system("Starting", "OK")
 borrarpantalla()
 banner_print()
 opcion = corporatemenu()
