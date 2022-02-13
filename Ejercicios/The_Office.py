@@ -102,8 +102,11 @@ def banner_print():
     print()
     print("Buenos días Sr {}, empleado ID {}, hoy es {}, esperemos que sea un gran día para todos.\n ".format(mi_usuario, str(empleado_id), today))
     print()
+    input("Presione [ENTER] tecla para continuar...")
+
 # MENU 1
 def menu_print(titulo, opciones_menu_principal):
+    borrarpantalla()
     mensaje_principal = "█ {} // ID: {} // DATE: {} // [THE OFFICE] █".format(titulo, empleado_id, today)
     print("█" * len(mensaje_principal))
     print(mensaje_principal)
@@ -124,7 +127,7 @@ def despedido():
     print("Usted ha sido nominado empleado del mes (malo). Recoja sus cosas y pase por RRHH, le están esperando."
           "Gracias por su servicio.")
     input("Presione [ENTER] tecla para continuar...")
-    loading_system("Shutting down ", "DONE")
+    #loading_system("Shutting down ", "DONE")
     print("""┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼
 ███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀
 ██┼┼┼┼██┼██┼┼┼┼┼██┼██┼┼┼█┼┼┼██┼██┼┼┼
@@ -153,6 +156,7 @@ def despedido():
     exit(1)
 
 def corporatemenu():
+    borrarpantalla()
     menu = "CORPORATE MENU"
     opciones_menu = ["Corporate mail", "User Management", "Service management",
                      "Deploy The Office software", "Run shell", "Shutdown system"]
@@ -183,6 +187,7 @@ def corporatemenu():
         opcion = corporatemenu()
     return opcion
 def corporatemail():
+    borrarpantalla()
     global correos_usuarios
     global correos_pendientes
     menu = "CORPORATE MAIL // " + str(correos_pendientes) + " Correos no leidos"
@@ -207,6 +212,7 @@ def corporatemail():
 
     elif opcion_mail == "3":
         global out_of_office
+        borrarpantalla()
         print("Buenos días:\n"
               "Gracias por su mensaje.\n"
               "Me encuentro de vacaciones sin acceso al correo electrónico.\n"
@@ -218,6 +224,8 @@ def corporatemail():
               "Saludos cordiales,\n"
               "BOFH")
         out_of_office = True
+        input("Presione [ENTER] tecla para continuar...")
+
         opcion = corporatemail()
     elif opcion_mail == "4":
         opcion = corporatemenu()
@@ -230,6 +238,7 @@ def corporatemail():
     return opcion_mail
 
 def user_management():
+    borrarpantalla()
     global usuarios_activos
     global mi_password
     menu = "USER MANAGEMENT // " + str(usuarios_activos) + " Usuarios activos en el system"
@@ -293,6 +302,7 @@ def user_management():
     return opcion_user_management
 
 def service_management():
+    borrarpantalla()
     global services_status
     global lista_servicios
     global servicio
@@ -341,6 +351,7 @@ def service_management():
     return opcion_service_management
 
 def office_deploy():
+    borrarpantalla()
     global office_version
     menu = "DEPLOY MANAGEMENT // Version actual: " + str(office_version)
     opciones_menu = ["Desplegar nueva version", "Eliminar software", "salir"]
@@ -387,21 +398,68 @@ def office_deploy():
     return opcion_office_deploy
 
 def run_shell():
-    https: // docs.python.org / 3 / library / telnetlib.html
-    HOST = "telehack.com"
-    tn = telnetlib.Telnet(HOST)
-    tn.mt_interact()
-    tn.close()
-    #tn.write(b"exit\n")
-    #print(tn.read_all().decode('ascii'))
+    borrarpantalla()
+    #https: // docs.python.org / 3 / library / telnetlib.html
+    from telnetlib import Telnet
+    #HOST = "telehack.com"
+    HOST = "towel.blinkenlights.nl"
+    with Telnet(HOST, 23) as tn:
+        tn.interact()
 
 def system_shutdown():
-    print()
+    borrarpantalla()
+    loading_system("Shutting down ", "DONE")
+
+def you_win():
+    print(""" ▄████▄   ▒█████   ███▄    █   ▄████  ██▀███   ▄▄▄     ▄▄▄█████▓ █    ██  ██▓    ▄▄▄     ▄▄▄█████▓ ██▓ ▒█████   ███▄    █   ██████  ▐██▌    
+▒██▀ ▀█  ▒██▒  ██▒ ██ ▀█   █  ██▒ ▀█▒▓██ ▒ ██▒▒████▄   ▓  ██▒ ▓▒ ██  ▓██▒▓██▒   ▒████▄   ▓  ██▒ ▓▒▓██▒▒██▒  ██▒ ██ ▀█   █ ▒██    ▒  ▐██▌    
+▒▓█    ▄ ▒██░  ██▒▓██  ▀█ ██▒▒██░▄▄▄░▓██ ░▄█ ▒▒██  ▀█▄ ▒ ▓██░ ▒░▓██  ▒██░▒██░   ▒██  ▀█▄ ▒ ▓██░ ▒░▒██▒▒██░  ██▒▓██  ▀█ ██▒░ ▓██▄    ▐██▌    
+▒▓▓▄ ▄██▒▒██   ██░▓██▒  ▐▌██▒░▓█  ██▓▒██▀▀█▄  ░██▄▄▄▄██░ ▓██▓ ░ ▓▓█  ░██░▒██░   ░██▄▄▄▄██░ ▓██▓ ░ ░██░▒██   ██░▓██▒  ▐▌██▒  ▒   ██▒ ▓██▒    
+▒ ▓███▀ ░░ ████▓▒░▒██░   ▓██░░▒▓███▀▒░██▓ ▒██▒ ▓█   ▓██▒ ▒██▒ ░ ▒▒█████▓ ░██████▒▓█   ▓██▒ ▒██▒ ░ ░██░░ ████▓▒░▒██░   ▓██░▒██████▒▒ ▒▄▄     
+░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░   ▒ ▒  ░▒   ▒ ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░ ▒ ░░   ░▒▓▒ ▒ ▒ ░ ▒░▓  ░▒▒   ▓▒█░ ▒ ░░   ░▓  ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ▒ ▒▓▒ ▒ ░ ░▀▀▒    
+  ░  ▒     ░ ▒ ▒░ ░ ░░   ░ ▒░  ░   ░   ░▒ ░ ▒░  ▒   ▒▒ ░   ░    ░░▒░ ░ ░ ░ ░ ▒  ░ ▒   ▒▒ ░   ░     ▒ ░  ░ ▒ ▒░ ░ ░░   ░ ▒░░ ░▒  ░ ░ ░  ░    
+░        ░ ░ ░ ▒     ░   ░ ░ ░ ░   ░   ░░   ░   ░   ▒    ░       ░░░ ░ ░   ░ ░    ░   ▒    ░       ▒ ░░ ░ ░ ▒     ░   ░ ░ ░  ░  ░      ░    
+░ ░          ░ ░           ░       ░    ░           ░  ░           ░         ░  ░     ░  ░         ░      ░ ░           ░       ░   ░       
+░                                                                                                                                           
+▓██   ██▓ ▒█████   █    ██     █     █░ ██▓ ███▄    █  ▐██▌                                                                                 
+ ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▓█░ █ ░█░▓██▒ ██ ▀█   █  ▐██▌                                                                                 
+  ▒██ ██░▒██░  ██▒▓██  ▒██░   ▒█░ █ ░█ ▒██▒▓██  ▀█ ██▒ ▐██▌                                                                                 
+  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ░█░ █ ░█ ░██░▓██▒  ▐▌██▒ ▓██▒                                                                                 
+  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░░██▒██▓ ░██░▒██░   ▓██░ ▒▄▄                                                                                  
+   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒    ░ ▓░▒ ▒  ░▓  ░ ▒░   ▒ ▒  ░▀▀▒                                                                                 
+ ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░      ▒ ░ ░   ▒ ░░ ░░   ░ ▒░ ░  ░                                                                                 
+ ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░      ░   ░   ▒ ░   ░   ░ ░     ░                                                                                 
+ ░ ░         ░ ░     ░            ░     ░           ░  ░      """)
+
+    print("""⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⡀⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⠄⠄⠄⠁⠄⠁⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⣀⣀⣤⣤⣴⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣦⣤⣤⣄⣀⡀⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⣴⣿⣿⡿⣿⢿⣟⣿⣻⣟⡿⣟⣿⣟⡿⣟⣿⣻⣟⣿⣻⢿⣻⡿⣿⢿⣷⣆⠄⠄⠄
+⠄⠄⠄⢘⣿⢯⣷⡿⡿⡿⢿⢿⣷⣯⡿⣽⣞⣷⣻⢯⣷⣻⣾⡿⡿⢿⢿⢿⢯⣟⣞⡮⡀⠄⠄
+⠄⠄⠄⢸⢞⠟⠃⣉⢉⠉⠉⠓⠫⢿⣿⣷⢷⣻⣞⣿⣾⡟⠽⠚⠊⠉⠉⠉⠙⠻⣞⢵⠂⠄⠄
+⠄⠄⠄⢜⢯⣺⢿⣻⣿⣿⣷⣔⡄⠄⠈⠛⣿⣿⡾⠋⠁⠄⠄⣄⣶⣾⣿⡿⣿⡳⡌⡗⡅⠄⠄
+⠄⠄⠄⢽⢱⢳⢹⡪⡞⠮⠯⢯⡻⡬⡐⢨⢿⣿⣿⢀⠐⡥⣻⡻⠯⡳⢳⢹⢜⢜⢜⢎⠆⠄⠄
+⠄⠄⠠⣻⢌⠘⠌⡂⠈⠁⠉⠁⠘⠑⢧⣕⣿⣿⣿⢤⡪⠚⠂⠈⠁⠁⠁⠂⡑⠡⡈⢮⠅⠄⠄
+⠄⠄⠠⣳⣿⣿⣽⣭⣶⣶⣶⣶⣶⣺⣟⣾⣻⣿⣯⢯⢿⣳⣶⣶⣶⣖⣶⣮⣭⣷⣽⣗⠍⠄⠄
+⠄⠄⢀⢻⡿⡿⣟⣿⣻⣽⣟⣿⢯⣟⣞⡷⣿⣿⣯⢿⢽⢯⣿⣻⣟⣿⣻⣟⣿⣻⢿⣿⢀⠄⠄
+⠄⠄⠄⡑⡏⠯⡯⡳⡯⣗⢯⢟⡽⣗⣯⣟⣿⣿⣾⣫⢿⣽⠾⡽⣺⢳⡫⡞⡗⡝⢕⠕⠄⠄⠄
+⠄⠄⠄⢂⡎⠅⡃⢇⠇⠇⣃⣧⡺⡻⡳⡫⣿⡿⣟⠞⠽⠯⢧⣅⣃⠣⠱⡑⡑⠨⢐⢌⠂⠄⠄
+⠄⠄⠄⠐⠼⣦⢀⠄⣶⣿⢿⣿⣧⣄⡌⠂⠢⠩⠂⠑⣁⣅⣾⢿⣟⣷⠦⠄⠄⡤⡇⡪⠄⠄⠄
+⠄⠄⠄⠄⠨⢻⣧⡅⡈⠛⠿⠿⠿⠛⠁⠄⢀⡀⠄⠄⠘⠻⠿⠿⠯⠓⠁⢠⣱⡿⢑⠄⠄⠄⠄
+⠄⠄⠄⠄⠈⢌⢿⣷⡐⠤⣀⣀⣂⣀⢀⢀⡓⠝⡂⡀⢀⢀⢀⣀⣀⠤⢊⣼⡟⡡⡁⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠈⢢⠚⣿⣄⠈⠉⠛⠛⠟⠿⠿⠟⠿⠻⠻⠛⠛⠉⠄⣠⠾⢑⠰⠈⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠑⢌⠿⣦⡡⣱⣸⣸⣆⠄⠄⠄⣰⣕⢔⢔⠡⣼⠞⡡⠁⠁⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠑⢝⢷⣕⡷⣿⡿⠄⠄⠠⣿⣯⣯⡳⡽⡋⠌⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⢮⣿⣽⣯⠄⠄⢨⣿⣿⡷⡫⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⠙⠝⠂⠄⢘⠋⠃⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄""")
 #############################
 # MAIN
 #############################
 
-# loading_system("Starting", "OK")
+loading_system("Starting", "OK")
 borrarpantalla()
 banner_print()
 opcion = corporatemenu()
@@ -409,7 +467,7 @@ opcion = corporatemenu()
 if correos_usuarios != 0 and out_of_office != True and usuarios_activos !=1 and active_services != 0 and office_version!= "Trojan.exe":
     despedido()
 else:
-    print("You WIN!")
+    you_win()
 
 
 
