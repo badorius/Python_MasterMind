@@ -405,7 +405,8 @@ def run_shell():
     HOST = "towel.blinkenlights.nl"
     with Telnet(HOST, 23) as tn:
         tn.interact()
-
+    input("Presione [ENTER] para continuar: ")
+    opcion = corporatemenu()
 def system_shutdown():
     borrarpantalla()
     loading_system("Shutting down ", "DONE")
