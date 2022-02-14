@@ -24,3 +24,5 @@ while numero > 1:
 print("Mi numero es {}".format(numero))
 ```
 # El combate Pokemon
+
+>Ejercicios/[test_while_pokemon.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/test_while_pokemon.py)
