@@ -81,3 +81,22 @@ La lista de la compra es:
 
 ```
 >Ejercicios/[lista_de_la_compra.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/lista_de_la_compra.py)
+
+Datos a comentar en la versión del curso:
+- El if con el input directamente: 
+```python 
+  if input("Seguro que quiere aãdir {} a la lista? [S/N]".fromat (opcion)) == "S":
+```
+- Cuando en una condición no queremos que se realice nada, podemos usar pass, ejemplo
+```python 
+  if input_usuario == "Q":
+    pass
+   elif input....
+```
+- Ejemplo de como hacer un while true y romperlo con un break tras una condición:
+```python 
+   while true:
+    if input_de_usuario =="Q":
+        break
+   elif input....
+```
