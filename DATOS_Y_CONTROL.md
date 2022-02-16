@@ -23,16 +23,17 @@ while numero > 1:
 
 print("Mi numero es {}".format(numero))
 ```
+---
 # El combate Pokemon
 
 >Ejercicios/[test_while_pokemon.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/test_while_pokemon.py)
-
+---
 # La barra de vida
 
 En python no existen las constantes, pero podemos utilizar variables en mayúsculas para hacer referencia a variables que no cambiaran de valor, de esta forma sabemos que sería como una constante, es como una nomenclatura.
 
 >Ejercicios/[test_while_pokemon_nate.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/test_while_pokemon_nate.py)
-
+---
 # Las listas
 Las listas son un tipo de variable en python, ```python list = ["naranja", "peras", "manzanas"]``` es como una array, puede contener, número, strings, etc...
 En las listas, podemos poner objetos nuevos, podemos buscar valores, buscar posiciones, que hay en la posición N, podemos unir dos listas y podemos ejecutar un código por cada uno de los objetos de nuestra lista.
@@ -81,8 +82,8 @@ La lista de la compra es:
 
 ```
 >Ejercicios/[lista_de_la_compra.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/lista_de_la_compra.py)
-
-Datos a comentar en la versión del curso:
+---
+**Información a comentar en la versión del curso:**
 - El if con el input directamente: 
 ```python 
   if input("Seguro que quiere aãdir {} a la lista? [S/N]".fromat (opcion)) == "S":
@@ -100,3 +101,9 @@ Datos a comentar en la versión del curso:
         break
    elif input....
 ```
+_Importante utilizar el breakpoint/debug para ver el recorrido del if/while en caso de comportamiento diferente al esperado._
+---
+# Aprendiendo el for
+
+
+
