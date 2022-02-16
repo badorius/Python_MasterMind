@@ -144,3 +144,4 @@ Si queremos hacer un for por ejemplo que no empiece en 0, podemos hacerlo con ra
 4
 >>>  
 ```
+>Ejercicios/[for_in_range.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_in_range.py)
