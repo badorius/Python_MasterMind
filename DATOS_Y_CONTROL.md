@@ -104,6 +104,43 @@ La lista de la compra es:
 _Importante utilizar el breakpoint/debug para ver el recorrido del if/while en caso de comportamiento diferente al esperado._
 ---
 # Aprendiendo el for
+Ejemplo for:
+```python
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+frase = "Hola, estoy aprendiendo python"
+for item in a:
+    print(item)
 
+for letra in frase:
+    print(letra)
+```
+>Ejercicios/[for.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for.py)
 
-
+Ejemplo for con función range. Range es una función muy util para el for, la que le pasamos un número y hace un iterable de todos los números:
+```python
+numero_de_repeticiones = int(input("Cuantas veces quires repetir el menssaje? "))
+for a in range(numero_de_repeticiones):
+    print("Hola")
+```
+Si imprimimos un range, nos muestra un iterable, 
+```python
+>>> print(range(4))
+range(0, 4)
+```
+Un range se puede convertir en una lista:
+```python
+>>> print(list(range(4)))
+[0, 1, 2, 3]
+>>>
+```
+Si queremos hacer un for por ejemplo que no empiece en 0, podemos hacerlo con range indicando el inicio y el fin como parámetro:
+```python
+>>> for i in range(1,5):
+...     print(i)
+... 
+1
+2
+3
+4
+>>>  
+```
