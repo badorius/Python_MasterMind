@@ -145,3 +145,14 @@ Si queremos hacer un for por ejemplo que no empiece en 0, podemos hacerlo con ra
 >>>  
 ```
 >Ejercicios/[for_in_range.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_in_range.py)
+---
+# Algunos ejercicios sencillos 
+
+#Ejemplo
+texto_usuario = "Hola, me llamo Nate. Tu como te llamas?
+
+espacios = 6
+puntos = 1
+comas = 1
+
+>Ejercicios/[for_ex1.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_ex1.py)
