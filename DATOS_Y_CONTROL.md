@@ -146,15 +146,13 @@ Si queremos hacer un for por ejemplo que no empiece en 0, podemos hacerlo con ra
 ```
 >Ejercicios/[for_in_range.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_in_range.py)
 ---
-# Algunos ejercicios sencillos 
+# Algunos ejercicios sencillos
 
-1. Ejemplo
+2. Ejemplo
 
 | texto_usuario                               | "Hola, me llamo Nate. Tu como te llamas? |
 |---------------------------------------------|------------------------------------------|
 | Output esperado                             | espacioes 6, puntos 1, comas 1           |
-
-
 
 >Ejercicios/[for_ex1.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_ex1.py)
 
@@ -165,5 +163,16 @@ En este ejemplo utilizaremos la libreŕia string haciendo un import de esta y ut
 |------------------|-------------------------------------------|
 | Output esperado  | mayusculas = 3                            |
 
-
 >Ejercicios/[for_ex2.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_ex2.py)
+
+3. Ejemplo
+Utiliizaremos la función range. Primero imprimiremos toda la tabla y después, Utilizando la operación módulo (el resto, en python %), solo sacaremos por pantalla los múltiples de 2
+
+| Numero elegido por el usuario | 2                                          |
+|-------------------------------|--------------------------------------------|
+| Output esperado               | tabla de multiplicar del 2 (2 x 1 = 2 ...) |
+
+>Ejercicios/[for_ex3.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_ex3.py)
+---
+# Algunos ejercicios menos sencillos
+
