@@ -149,6 +149,7 @@ Si queremos hacer un for por ejemplo que no empiece en 0, podemos hacerlo con ra
 # Algunos ejercicios sencillos 
 
 - Ejemplo 1
+
   `texto_usuario = "Hola, me llamo Nate. Tu como te llamas? 
   espacios = 6
   puntos = 1
@@ -157,6 +158,7 @@ Si queremos hacer un for por ejemplo que no empiece en 0, podemos hacerlo con ra
 >Ejercicios/[for_ex1.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_ex1.py)
 
 - Ejemplo 2
+    
     `texto usuario = "Hola, me llamo Nate. Tu como te llamas? 
     \#Output esperado:
     mayusculas = 3`
