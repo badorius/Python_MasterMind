@@ -159,6 +159,7 @@ Si queremos hacer un for por ejemplo que no empiece en 0, podemos hacerlo con ra
 >Ejercicios/[for_ex1.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_ex1.py)
 
 2. Ejemplo
+En este ejemplo utilizaremos la libreŕia string haciendo un import de esta y utilizando string.ascii_uppercase
 
 | texto usuario    | "Hola, me llamo Nate. Tu como te llamas?  |
 |------------------|-------------------------------------------|
