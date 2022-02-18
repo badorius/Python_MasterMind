@@ -148,19 +148,21 @@ Si queremos hacer un for por ejemplo que no empiece en 0, podemos hacerlo con ra
 ---
 # Algunos ejercicios sencillos 
 
-1 Ejemplo
+1. Ejemplo
 
-`texto_usuario = "Hola, me llamo Nate. Tu como te llamas?
-espacios = 6
-puntos = 1
-comas = 1`
+| texto_usuario                               | "Hola, me llamo Nate. Tu como te llamas? |
+|---------------------------------------------|------------------------------------------|
+| Output esperado                             | espacioes 6, puntos 1, comas 1           |
+
+
 
 >Ejercicios/[for_ex1.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_ex1.py)
 
-2 Ejemplo
+2. Ejemplo
 
-`texto usuario = "Hola, me llamo Nate. Tu como te llamas? 
-#Output esperado:
-mayusculas = 3`
+| texto usuario    | "Hola, me llamo Nate. Tu como te llamas?  |
+|------------------|-------------------------------------------|
+| Output esperado  | mayusculas = 3                            |
+
 
 >Ejercicios/[for_ex2.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_ex2.py)
