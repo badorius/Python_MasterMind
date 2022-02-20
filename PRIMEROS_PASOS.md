@@ -395,6 +395,7 @@ else:
 print (puntuacion)
 ```
 >Ejercicios/[quiz.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/quiz.py)
+
 ---
 #Eligiendo tu nuevo movil
 En primer lugar vamos a mejorar el conversor de divisas, para ello crearemos un nuevo programa conversor_de_divisas.py
@@ -496,4 +497,3 @@ print("Te móvil ideal es: " + movil_ideal)
 
 >Ejercicios/[The_Office.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/The_Office.py)
 ---
-
