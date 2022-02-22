@@ -356,4 +356,4 @@ while True:
         os.system("cls")
 ```
 ---
-#Aparecer de la otra parte del mapa
+# Aparecer de la otra parte del mapa
