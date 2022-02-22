@@ -233,7 +233,7 @@ print("El numero pequeño es {} y el grande {}".format(numero_pequenio, numero_g
 ---
 # Navegando un mapa
 Realizremos un mapa y un personaje con simobolos ASCII, para ello usaremos un mapa de 20 de ancho y 15 de alto y debería quedar de la siguiente forma:
-
+```shell
 +------------------------------------------------------------+
 |                                                            |
 |          @                                                 |
@@ -251,6 +251,7 @@ Realizremos un mapa y un personaje con simobolos ASCII, para ello usaremos un ma
 |                                                            |
 |                                                            |
 +------------------------------------------------------------+
+```
 
 El personaje se simbolizará con un @ que en un incio lo pondremos en la posición 3,1. Atención al parametro end de la llamada al print, para que no realice salto de línea después de pintar un espacio o un carácter. Ejemplo: ```python print(" @ ",end='')```
 Ejemplo pintado de mapa, utilizaremos un for para las coordenadas WIDTH y otro for dentro para las coordenadas HEIGHT:
