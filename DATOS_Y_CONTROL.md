@@ -279,3 +279,81 @@ for coordinate_y in range(MAP_HEIGHT):
 
 print("+" + '-' * MAP_WIDTH * 3 + "+")
 ```
+---
+# Creando movimineto interactivo
+Para mover el personaje, con lo que sabemos actualmente podríamos usar un ```python direction = input("Dónde te quieres mover? [WASD]: ")``` pero esto sería un poco aburrido, ya nos pedirá un [ENTER] después de cada opción.
+Para hacerlo más divertido utilizaremos la librería readchar ```python direction = readchar.readchar()``` esta librería no viene por defecto en python y la deberemos instalar, para ello podemos hacer [ALT] + [ENTER] sobre la línea maracada en rojo (ya que pycharm no encuntra dicho objeto) y le daremos a la opción de instalar el paquete readchar.
+Ejemplo con la librería pandas:
+
+![](IMG/2022-02-22-1645562301_screenshot_598x349.jpg)
+
+printchar puede que no funcione en la consola de pycharm, lo ejecutaremos desde la consola del systema. Pero deberemos cargar el virtual environment donde estarán las librerias descargadas por pycharm ```shell source ../venv/bin/activate```, esto nos devolverá la shell con el virtual environment cargado.
+Otra opción sería en pycharm, botón derecho open in terminal.
+
+Podemos hacer una prueba añadiendo readchar al código:
+```python
+#direction = input("Dónde te quieres mover? [WASD]: ")
+
+direction = readchar.readchar()
+print(direction)
+```
+En principio este código nos imprimrá por pantalla la tecla pulsada, pero parece ser que en cmd de windows (en mi terminal no me ha sucedido) si puslamos por ejemplo la tecla f, nos devolverá por pantalla ```shell b'f'``` Esta b nos la añade porqué el readdchar nos devuelve el resultado en bytes, si queremos que nos devuelva el resultado en string, haríamos lo siguiente:
+```python
+#direction = input("Dónde te quieres mover? [WASD]: ")
+
+direction = readchar.readchar().decode()
+print(direction)
+```
+Parece ya sea por la versión de python o por la terminal, en mi caso no ha sido necesario.
+Una vez apreatada la tecla deseada, solo tenemos que meter los if/elif y modificar la variable de las cordenadas:
+_Atención a la opción q, al tener un while True al principio del programa, el break se utiliza para romper el while.
+```python
+import os
+import readchar
+
+POS_X = 0
+POS_Y = 1
+MAP_WIDTH = 20
+MAP_HEIGHT = 15
+
+my_position = [3, 1]
+while True:
+    #my_position[POS_X]
+    #my_position[POS_Y]
+
+    print("+" + '-' * MAP_WIDTH * 3 + "+")
+
+    for coordinate_y in range(MAP_HEIGHT):
+        print ("|",end='')
+        for coordinate_x in range(MAP_WIDTH):
+            if my_position[POS_X] == coordinate_x and my_position[POS_Y] == coordinate_y:
+                print(" @ ",end='')
+            else:
+                print("   ",end='')
+        print("|")
+
+    print("+" + '-' * MAP_WIDTH * 3 + "+")
+
+    #direction = input("Dónde te quieres mover? [WASD]: ")
+    direction = readchar.readchar()
+
+    if direction == "w":
+        my_position[POS_Y] -= 1
+    if direction == "s":
+        my_position[POS_Y] += 1
+    if direction == "a":
+        my_position[POS_X] -= 1
+    if direction == "d":
+        my_position[POS_X] += 1
+    if direction == "q":
+        #Rompemos el while True
+        break
+
+    #borramos pantalla
+    if os.name == "posix":
+        os.system("clear")
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        os.system("cls")
+```
+---
+#Aparecer de la otra parte del mapa
