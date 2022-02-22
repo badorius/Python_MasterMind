@@ -232,3 +232,49 @@ print("El numero pequeño es {} y el grande {}".format(numero_pequenio, numero_g
 >Ejercicios/[for_ex4.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/for_ex4.py)
 ---
 # Navegando un mapa
+Realizremos un mapa y un personaje con simobolos ASCII, para ello usaremos un mapa de 20 de ancho y 15 de alto y debería quedar de la siguiente forma:
+
++------------------------------------------------------------+
+|                                                            |
+|          @                                                 |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
+|                                                            |
++------------------------------------------------------------+
+
+El personaje se simbolizará con un @ que en un incio lo pondremos en la posición 3,1. Atención al parametro end de la llamada al print, para que no realice salto de línea después de pintar un espacio o un carácter. Ejemplo: ```python print(" @ ",end='')```
+Ejemplo pintado de mapa, utilizaremos un for para las coordenadas WIDTH y otro for dentro para las coordenadas HEIGHT:
+```python
+POS_X = 0
+POS_Y = 1
+MAP_WIDTH = 20
+MAP_HEIGHT = 15
+
+my_position = [3, 1]
+
+#my_position[POS_X]
+#my_position[POS_Y]
+
+print("+" + '-' * MAP_WIDTH * 3 + "+")
+
+for coordinate_y in range(MAP_HEIGHT):
+    print ("|",end='')
+    for coordinate_x in range(MAP_WIDTH):
+        if my_position[POS_X] == coordinate_x and my_position[POS_Y] == coordinate_y:
+            print(" @ ",end='')
+        else:
+            print("   ",end='')
+    print("|")
+
+print("+" + '-' * MAP_WIDTH * 3 + "+")
+```
