@@ -318,6 +318,7 @@ MAP_HEIGHT = 15
 
 my_position = [3, 1]
 while True:
+    #DRAW MAP
     #my_position[POS_X]
     #my_position[POS_Y]
 
@@ -325,7 +326,7 @@ while True:
 
     for coordinate_y in range(MAP_HEIGHT):
         print ("|",end='')
-        for coordinate_x in range(MAP_WIDTH):
+        for coordinate_x in range(MAP_WIDTH):            
             if my_position[POS_X] == coordinate_x and my_position[POS_Y] == coordinate_y:
                 print(" @ ",end='')
             else:
@@ -357,3 +358,186 @@ while True:
 ```
 ---
 # Aparecer de la otra parte del mapa
+Para aparecer en la otra parte de la pantalla, utilizaremos la operación módulo (% el resto de una división) ya que de esta manera, si estamos en la posición 15 y nuestra pantalla mide 15, el resto nos devuelve lo que nos hemos pasado de pantalla y pero empezando por el uno
+```python
+>>> 16%15
+1
+>>>
+```
+En este ejemplo vemos que si la pantalla mide 15 y vamos a la 16, el resto de 1 es lo que sobra y nos viene muy bien para poner el resto como coordenada.
+Aplicado al código seria:
+```python
+    direction = readchar.readchar()
+
+    if direction == "w":
+        my_position[POS_Y] -= 1
+        my_position[POS_Y] %= MAP_HEIGHT
+    if direction == "s":
+        my_position[POS_Y] += 1
+        my_position[POS_Y] %= MAP_HEIGHT
+    if direction == "a":
+        my_position[POS_X] -= 1
+        my_position[POS_X] %= MAP_WIDTH
+    if direction == "d":
+        my_position[POS_X] += 1
+        my_position[POS_X] %= MAP_WIDTH
+    if direction == "q":
+        break
+```
+El módulo funcionaría tanto en negativo como en positivo, ya que si por ejemplo hacemos -1 % 15, nos enviaría a la posición 14 que sería el resto.
+
+---
+# Colocando los cebos
+En este apartado vamos a poner objetos por el mapa. Estos objetos van estar dentro de una lista de objetos, que a su vez estará formada por otras listas dentro, que van a tener las cordenadas de los objetos.
+```python
+map_objects = [[2, 3], [5, 4], [3, 4], [10, 6]]
+```
+Con esto ahora deberemos chquear cada vez que nos movemos, si estamos pasando por la cooredenada que tiene uno de los objetos.
+Si estamos en una posición que no hay objeto, no pasará nada, si estamos en la posición donde hay un objeto, borraremos dicho objeto. Esto lo aremos con la variable object_in_cell
+
+Para dibujar los objetos, haremos la modificación en la parte del código donde dibujamos el mapa, dentro de if, evaularemos si estemos en la coordenado del personaje pintaremos un @, si estamos en la coordenada del objeto, pintaremos un *, si no, pintaremos un espacio en blanco, para ello utilizaremos la variable char_to_draw:
+```python
+    #DRAW MAP
+    print("+" + '-' * MAP_WIDTH * 3 + "+")
+
+    for coordinate_y in range(MAP_HEIGHT):
+        print ("|", end='')
+        for coordinate_x in range(MAP_WIDTH):
+            char_to_draw = " "
+
+            for map_object in map_objects:
+                if map_object[POS_X] == coordinate_x and map_object[POS_Y] == coordinate_y:
+                    char_to_draw = "*"
+
+            if my_position[POS_X] == coordinate_x and my_position[POS_Y] == coordinate_y:
+                char_to_draw = "@"
+
+            print(" {} ".format(char_to_draw), end="")
+        print("|")
+
+    print("+" + '-' * MAP_WIDTH * 3 + "+")
+```
+Para borrar los objects cuando pasamos por encima de ellos, borraremos el objeto de la lista cuando pasemos por esa coordenadada. Por ejemplo, si tenemos una ```python lista a = ["a", "b", "c"]``` y luego hacemos ```python a.remove("c")``` borraríamos el objecto c de la lista.
+En el código del programa quedaría de tal forma:
+
+```python
+while True:
+    #my_position[POS_X]
+    #my_position[POS_Y]
+
+    #DRAW MAP
+    print("+" + '-' * MAP_WIDTH * 3 + "+")
+
+    for coordinate_y in range(MAP_HEIGHT):
+        print ("|", end='')
+        for coordinate_x in range(MAP_WIDTH):
+            char_to_draw = " "
+            #Unset object_in_cell var for each redraw.
+            object_in_cell = None
+
+            for map_object in map_objects:
+                if map_object[POS_X] == coordinate_x and map_object[POS_Y] == coordinate_y:
+                    char_to_draw = "*"
+                    #We are on object possition, so we set object_in_cell var with coordenate value do delete object from list
+                    object_in_cell = map_object
+
+            if my_position[POS_X] == coordinate_x and my_position[POS_Y] == coordinate_y:
+                char_to_draw = "@"
+
+                # If var object_in_cell is not None, we have to remove coordenate value from list:
+                if object_in_cell:
+                    map_objects.remove(object_in_cell)
+
+            print(" {} ".format(char_to_draw), end="")
+        print("|")
+
+    print("+" + '-' * MAP_WIDTH * 3 + "+")
+```
+---
+# SNAKE!
+Primer reto será modificar la lista de objecto para que contenga 10 objetos y aparezcan en un lugar aleatorio, para ello modificaremos la variable de tal forma:
+```python
+NUM_OF_MAP_OBJECTS = 11
+
+my_position = [3, 1]
+map_objects = []
+
+# Generate random objects on the map
+while len(map_objects) < NUM_OF_MAP_OBJECTS:
+    new_position = [random.randint(0, MAP_WIDTH), random.randint(0, MAP_HEIGHT)]
+
+    if new_position not in map_objects and new_position != my_position:
+        map_objects.append(new_position)
+```
+Ahora vamos a crear la variable ```python tail_lenght``` para hacer que la cola de nuestro personaje crezca cada vez que come un objeto (snake)
+Primer debemos aumentar el valor de esta variable cada vez que estamos en la celda del objecto:
+```python
+                # If var object_in_cell is not None, we have to remove coordenate value from list:
+                if object_in_cell:
+                    map_objects.remove(object_in_cell)
+                    tail_lenght += 1
+```
+Luego necesitamos printar la cola que va ser una lista llamada ```python tail``` cada vez que estemos en la celda del objecto haremos un append a la lista con la posición
+Deberemos modificar valores en la parte del código de draw map y en la parte del movimiento, necesitamos poner en la cola nuestras últimas posiciones (.insert es como un append para las listas):
+```python
+    if direction == "w":
+        tail.insert(0, my_position.copy())
+        my_position[POS_Y] -= 1
+        my_position[POS_Y] %= MAP_HEIGHT
+    if direction == "s":
+        tail.insert(0, my_position.copy())
+        my_position[POS_Y] += 1
+        my_position[POS_Y] %= MAP_HEIGHT
+    if direction == "a":
+        tail.insert(0, my_position.copy())
+        my_position[POS_X] -= 1
+        my_position[POS_X] %= MAP_WIDTH
+    if direction == "d":
+        tail.insert(0, my_position.copy())
+        my_position[POS_X] += 1
+        my_position[POS_X] %= MAP_WIDTH
+    if direction == "q":
+        break
+```
+El ```python .copy``` lo utilizamos ya que hemos visto que si no ponemos el copy, está guardando todo el rato la reerencia y no la copia, para insertamos la copia.
+
+Para pintar la cola por donde vamos pasando necesitamos este for dentro del draw:
+```python
+            # We draw all tail lenght with for
+            for tail_piece in tail:
+                if tail_piece[POS_X] == coordinate_x and tail_piece[POS_Y] == coordinate_y:
+                    char_to_draw = "@"
+```
+
+De esta forma, nos dibuja una cola infinitamente larga, para que esto no suceda, utilizaremos el ```python tail = tail[:tail_lenght]```
+Como vamos sumando +=1 a la variable tail lenght, cada vez que coincide con un objeto, esto nos hará el efecto de la cola.
+
+```python
+    #direction = input("Dónde te quieres mover? [WASD]: ")
+    direction = readchar.readchar()
+
+    if direction == "w":
+        tail.insert(0, my_position.copy())
+        tail = tail[:tail_lenght]
+        my_position[POS_Y] -= 1
+        my_position[POS_Y] %= MAP_HEIGHT
+    if direction == "s":
+        tail.insert(0, my_position.copy())
+        tail = tail[:tail_lenght]
+        my_position[POS_Y] += 1
+        my_position[POS_Y] %= MAP_HEIGHT
+    if direction == "a":
+        tail.insert(0, my_position.copy())
+        tail = tail[:tail_lenght]
+        my_position[POS_X] -= 1
+        my_position[POS_X] %= MAP_WIDTH
+    if direction == "d":
+        tail.insert(0, my_position.copy())
+        tail = tail[:tail_lenght]
+        my_position[POS_X] += 1
+        my_position[POS_X] %= MAP_WIDTH
+    if direction == "q":
+        break
+```
+---
+# Snake muere :(
