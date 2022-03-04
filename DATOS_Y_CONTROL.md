@@ -541,3 +541,99 @@ Como vamos sumando +=1 a la variable tail lenght, cada vez que coincide con un o
 ```
 ---
 # Snake muere :(
+Al igual que hicimos con object_in_cell, seteamos una nueva variable llamada tail_in_cell, en cual empezamos el bucle informando a la variable que no estamos en unas coordenadas donde hay cola:
+```python
+            #Unset object_in_cell var for each redraw.
+            #There not objects where we are
+            object_in_cell = None
+            #There no tail where we are
+            tail_in_cell = None
+```
+Pero si estamos en un lugar donde hay cola, lo deberemos informar a la variable tail_in_cell con su valor:
+```python
+            # We draw all tail lenght with for
+            for tail_piece in tail:
+                if tail_piece[POS_X] == coordinate_x and tail_piece[POS_Y] == coordinate_y:
+                    char_to_draw = "@"
+                    tail_in_cell = tail_piece
+```
+Una vez informada la variable, pondremos un if en el que si estamos donde hay cola, imprimimos el mensaje "Has Muerto!" y modificamos la variable end_game a True para salir del while:
+```python
+                if tail_in_cell:
+                    print("Has muerto!")
+                    end_game = True
+```
+---
+# Laberinto de serpientes
+Para mejorar un poco el código, hemos añadido una variable died = False y cuando morimos, la seteamos a True, al final del juego podemos añadir un if que si estás muerto imprima el mensaje:
+```python
+died = False
+...
+...
+...
+
+                if tail_in_cell:
+                    end_game = True
+                    died = True
+                    ...
+                    ...
+                    ...
+    if died:
+         print("Has muerto!")
+```
+Con el fin de que cada vez que comemos un objeto, parezca uno de nuevo, hemos movido todo el bloque de generación de objetos random dentro del while, de esta forma cada vez que pasamos por el while, volvemos a rellenar la lista do objectos hasta su máximo:
+```python
+while not end_game:
+    #my_position[POS_X]
+    #my_position[POS_Y]
+
+    # Generate random objects on the map
+    while len(map_objects) < NUM_OF_MAP_OBJECTS:
+        new_position = [random.randint(0, MAP_WIDTH), random.randint(0, MAP_HEIGHT)]
+
+        if new_position not in map_objects and new_position != my_position:
+            map_objects.append(new_position)
+```
+Ahora necesitamos añadir obstáculos y muros, para hacer los muros, no utilizaremos el mismo método que los objetos, ya que lo complicaría mucho y no sería lo más optimo a nivel de rendimiento, lo que haremos es guardal el mapa  una lista de listas. El mapa va a tener 20 listas de ancho y cada una de estas listas, tendrá 15 objetos dentro  de alto.
+Crearemos una variable llamada obstacle_definition, donde le pasaremos un string con el dibujo del mapa con ##### #### ###. Ejemplo:
+```python
+obstacle_definition = """\
+############################
+                        ####
+##############          ####
+##############          ####
+##################      ####
+#####                   ####
+#####     ##########    ####
+######                  ####
+############     #####  ####
+#############   ####### ####
+#############   ####### ####
+##############          ####
+########            ########
+##############          ####
+############################\
+"""
+```
+Para poder pasar este string a la lista que hemos comentado. Primero haremos un slpit de esta para que cada línea nos la ponga en un objeto de la lista después de cada salto de línea:
+
+```python
+# Create obstacle map
+obstacle_definition = obstacle_definition.split("\n")
+```
+Una vez entendida esta linea, la modificaremos haciendo una  list comprehsion (compresion de lista) para crear la lista de listas:
+```python
+obstacle_definition = [list(row) for row in obstacle_definition.split("\n")]
+```
+De esta forma, tenemos obstacle_definition[cordenate_y][cordenate_x] y directamente podemos acceder al objeto que será un espacio o un #. Ahora nos iremos a la zona de dibujar el mapa:
+```python
+                if obstacle_definition[coordinate_y][coordinate_x] == "#":
+                    char_to_draw = "#"
+```
+Para adaptar el ancho y alto del mapa, modificaremos las variables MAP_WIDTH y MAP_HEIGHT con un len del objeto ya splitead
+```python
+MAP_WIDTH = len(obstacle_definition[0])
+MAP_HEIGHT = len(obstacle_definition)
+```
+---
+# Final Boss: Pokemon snake
