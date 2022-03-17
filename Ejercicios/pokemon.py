@@ -21,6 +21,7 @@ global formula_squirtle
 formula_squirtle = int(vida_squirtle * TAMANO_BARRA_DE_VIDA / VIDA_INICIAL_SQUIRTLE)
 
 
+
 # FUNC BORRAR PANTALLA
 def borrarpantalla():
     if os.name == "posix":
@@ -29,6 +30,7 @@ def borrarpantalla():
         os.system ("cls")
 
 def barra_vida():
+    print()
     global formula_pikachu, formula_squirtle, TAMANO_BARRA_DE_VIDA, vida_pikachu, vida_squirtle
     if vida_pikachu < 0:
         vida_pikachu = 0
@@ -38,8 +40,10 @@ def barra_vida():
         print("Squirtle {} ({}/{})".format(
             "[" + "*" * formula_squirtle + " " * (TAMANO_BARRA_DE_VIDA - formula_squirtle) + "]", vida_squirtle,
             VIDA_INICIAL_SQUIRTLE))
-        print("Squirtle gana!")
-        exit(0)
+        input("Squirtle gana! [ENTER]")
+        borrarpantalla()
+        return "Squirtle"
+
 
     if vida_squirtle < 0:
         vida_squirtle = 0
@@ -49,28 +53,33 @@ def barra_vida():
         print("Squirtle {} ({}/{})".format(
             "[" + "*" * formula_squirtle + " " * (TAMANO_BARRA_DE_VIDA - formula_squirtle) + "]", vida_squirtle,
             VIDA_INICIAL_SQUIRTLE))
-        print("Pikachu gana!")
-        exit(0)
+        input ("Pikachu gana, GAMEOVER! [ENTER]")
+        exit()
+
 
     print("Pikachu  {} ({}/{})".format("[" + "*" * formula_pikachu + " " * (TAMANO_BARRA_DE_VIDA- formula_pikachu) + "]", vida_pikachu, VIDA_INICIAL_PIKACHU))
     print("Squirtle {} ({}/{})".format("[" + "*" * formula_squirtle + " " * (TAMANO_BARRA_DE_VIDA- formula_squirtle) + "]", vida_squirtle, VIDA_INICIAL_SQUIRTLE))
 
-
-
-borrarpantalla()
-barra_vida()
-
 def main_run_poquemon():
+    global VIDA_INICIAL_PIKACHU
     VIDA_INICIAL_PIKACHU = 80
+    global VIDA_INICIAL_SQUIRTLE
     VIDA_INICIAL_SQUIRTLE = 90
+    global TAMANO_BARRA_DE_VIDA
     TAMANO_BARRA_DE_VIDA = 100
 
+    global vida_pikachu
     vida_pikachu = VIDA_INICIAL_PIKACHU
+    global vida_squirtle
     vida_squirtle = VIDA_INICIAL_SQUIRTLE
 
     # FORMULA A% de C = C*A/100
+    global formula_pikachu
     formula_pikachu = int(vida_pikachu * TAMANO_BARRA_DE_VIDA / VIDA_INICIAL_PIKACHU)
+    global formula_squirtle
     formula_squirtle = int(vida_squirtle * TAMANO_BARRA_DE_VIDA / VIDA_INICIAL_SQUIRTLE)
+
+
 
     while vida_pikachu > 0 and vida_squirtle > 0:
         # Se desenvuelven los turnos de combate.
@@ -127,8 +136,11 @@ def main_run_poquemon():
 
 
     if vida_pikachu > vida_squirtle:
-        print("Pikachu gana!")
+        input("Pikachu gana, GAMEOVER! [ENTER]")
+        exit()
     else:
-        print("Squirtle gana!")
+        input("Squirtle gana! [ENTER]")
+        borrarpantalla()
+        return "Squirtle"
 
 
