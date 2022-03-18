@@ -5,8 +5,6 @@ import readchar
 import pokemon
 
 
-
-
 POS_X = 0
 POS_Y = 1
 
