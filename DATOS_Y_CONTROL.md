@@ -637,3 +637,4 @@ MAP_HEIGHT = len(obstacle_definition)
 ```
 ---
 # Final Boss: Pokemon snake
+>Ejercicios/[maze_game_badorius.py](https://github.com/badorius/Python_MasterMind/blob/master/Ejercicios/maze_game_badorius.py)
