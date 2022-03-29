@@ -54,6 +54,6 @@ return siempre es el fin de la función, pararía la función, si ponemos solo r
 Las variables que están dentro de la función, se eliminan automáticamente una vez finalizada la función. Podríamos decir que la función, es su un programa con sus variables y sus estados, todo lo que ocurra dentro se elimina una vez finaliza la función.
 
 Python ya tiene built in functions, podemos dar un vistazo en:
->[https://docs.python.org/3/library/functions.html]("https://docs.python.org/3/library/functions.html")
+[https://docs.python.org/3/library/functions.html](https://docs.python.org/3/library/functions.html)
 
 
