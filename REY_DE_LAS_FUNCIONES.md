@@ -56,4 +56,13 @@ Las variables que están dentro de la función, se eliminan automáticamente una
 Python ya tiene built in functions, podemos dar un vistazo en:
 [https://docs.python.org/3/library/functions.html](https://docs.python.org/3/library/functions.html)
 
+Realmente, abrir un archivo en python y empezar a escribir todo el código entero en el, no es el concepto correcto de python. A partir de ahora, la estructura que utilizaremos será como la del siguiente ejemplo:
+```python
+def main():
+    print("Hola mundo")
+
+if __name__ == "__main__":
+    main()
+```
+
 
