@@ -1,3 +1,12 @@
+def main(numero):
+    potencia = numero * numero
+    return potencia
+
+if __name__ == "__main__":
+    user_numero = int(input("Introduzca un número: "))
+    user_potencia = main(user_numero)
+    print("La potencia de {} es {}.".format(user_numero, user_potencia))
+
 """def saludo_secreto():
     print("Hola Mundo")
 
@@ -16,7 +25,7 @@ saludo_sectario("nataS")
 saludo_sectario("reficuL")
 saludo_sectario("htiliL")
 saludo_sectario("ratS gninroM")"""
-
+"""
 def largo_string(mi_string):
     largo = 0
     for n in mi_string:
@@ -26,3 +35,4 @@ def largo_string(mi_string):
 largo_de_la_string = largo_string("Hola mundo")
 print(largo_de_la_string)
 print(len("Hola mundo"))
+"""

@@ -64,5 +64,9 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+Programaremos todo dentro de main, programación funcional.
+Ejerecicios "Esto son funciones"
+[Ejercicio 1]()
+[Ejercicio 2]()
 
 
