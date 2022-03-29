@@ -17,9 +17,9 @@ saludo_secreto()
 ```
 >**NOTA:**
 Entre funciones y código main, deben existir 2 líneas como mínimo.
-Cuando llamamos a la función lo hacemos con saludo_secreto(), si no ponemos los paréntesis, estamos haciendo referencia al objecto, no llamando a la función, ya que en python las funciones son objetos. En python todo son objetos.
-Podríamos hacer un print del objeto/función, ejemplo y nos mostraría la dirección de memorial:
+Cuando llamamos a la función lo hacemos con saludo_secreto(), si no ponemos los paréntesis, estamos haciendo referencia al objecto, no llamando a la función, ya que en python las funciones son objetos. 
 
+En python todo son objetos. Podríamos hacer un print del objeto/función, ejemplo y nos mostraría la dirección de memorial:
 ```python
 print(saludo_secreto)
 <function saludo_secreto at 0x7f4e2e167d90>
@@ -38,7 +38,22 @@ saludo_sectario("ratS gninroM")
 >**Nota: 
 Para darle la vuelta a un string, hemos utilizado nombre[::-1], lo veremos con más detalle.**
 
-Ejemplo devolver argumento función:
+Ejemplo devolver argumento función con return:
 ```python
+def largo_string(mi_string):
+    largo = 0
+    for n in mi_string:
+        largo += 1
+    return largo
 
+largo_de_la_string = largo_string("Hola mundo")
+print(largo_de_la_string)
 ```
+>Nota:
+return siempre es el fin de la función, pararía la función, si ponemos solo return la función finalizaría, si ponemos return $VARIABLE, la función finalizará devolviendo el valor de la variable.
+Las variables que están dentro de la función, se eliminan automáticamente una vez finalizada la función. Podríamos decir que la función, es su un programa con sus variables y sus estados, todo lo que ocurra dentro se elimina una vez finaliza la función.
+
+Python ya tiene built in functions, podemos dar un vistazo en:
+>[https://docs.python.org/3/library/functions.html]("https://docs.python.org/3/library/functions.html")
+
+
