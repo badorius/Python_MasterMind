@@ -65,10 +65,14 @@ if __name__ == "__main__":
     main()
 ```
 Programaremos todo dentro de main, programación funcional.
-Ejerecicios "Esto son funciones"
+
+**Ejerecicios "Esto son funciones"**
+
 Usando la nueva estructura de programas basado en la función main() y la condición if final, crea un programa de cualquier tipo. Lo que te de la gana. Usa el debugger para ver como se produce el hilo de ejecución del código.
 [Ejercicio 1](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/Ejercicio1.py)
+
 Crea un programa que contenga una función que calcule la potencia de un numero introducido como argumento, por ejemplo:
 [Ejercicio 2](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/Ejercicio2.py)
 
+---
 
