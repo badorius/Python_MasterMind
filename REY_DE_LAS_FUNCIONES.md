@@ -207,5 +207,6 @@ def main():
 La funcion sum() es propia de python.
 
 Como ejercicio, hay que hacer un programa con una funcion que calcule una potencia de un numero que se le pasa por parametro, por defecto si no se pasa el segundo parametro sera el numero del primer parametro elevado a 2, si se pasan los dos paramentros sera el numero elevado al segundo parametro.
+
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py)
 
