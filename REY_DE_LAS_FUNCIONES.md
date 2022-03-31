@@ -179,3 +179,33 @@ Una tupla es como una lista, pero no se puede modificar, no tiene funciones para
 Las tuplas se usan especialmente en python, porque ocupan menos memoria que las listas.
 
 
+Podemos crear funciones dentro de funciones, estas solo podran ser llamadas desde la funcion donde se han creado, no desde una tercera funcion, lo que pasa en las vegas, se queda en las vegas. Todo lo que hay definido en una funcion solo existe en la funcion.
+Ejemplo:
+```python
+def medir_largos(iterable, *args):
+    def sumar(num1, num2):
+        return num1 + num2
+    
+    Print("Total suma:", sumar(1, 2))
+```
+>Notas
+La funcion sumar solo se puede llamar desde la propia funcion medir_largos
+
+Otra cosa que podemos pasar a las funciones son atributos opcionales. Al definir la funcion, podemos crear estos argumentos con su valor default, que si cuando se hace la llamada a la funcion no son pasados, entraran en la funcion con su valor por defecto, o de lo contrario, cuando llamamos a la funcion pasamos este argumento con su valor, la funcion cogera el valor de la llamda. 
+Ejemplo:
+```python
+def medir_largos(iterable, *args, sumar_todo=False):
+    ...
+    ...
+    if sumar_todo:
+        largos=sum(largos)
+
+def main():
+    print(medir_largos("hola", "como", sumar_todo=True))
+```
+>Nota:
+La funcion sum() es propia de python.
+
+Como ejercicio, hay que hacer un programa con una funcion que calcule una potencia de un numero que se le pasa por parametro, por defecto si no se pasa el segundo parametro sera el numero del primer parametro elevado a 2, si se pasan los dos paramentros sera el numero elevado al segundo parametro.
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py)
+
