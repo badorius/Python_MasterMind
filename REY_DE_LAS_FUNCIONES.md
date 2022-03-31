@@ -75,4 +75,53 @@ Crea un programa que contenga una función que calcule la potencia de un numero 
 [Ejercicio 2](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/Ejercicio2.py)
 
 ---
+# Experimentos
+Cuando definimos una funcion y no queremos que en esta se ejecute nada, lo haremos con pass:
+```python
+def main():
+    pass
+```
+Ejemplo de recursividad:
+Funciones que llaman a otra funcion dentro de un bucle:
+```python
+from time import sleep
 
+def c():
+    print("c")
+    sleep(1)
+    a()
+
+def b():
+    print("b")
+    sleep(1)
+    c()
+
+def a():
+    print("a")
+    sleep(1)
+    b()
+
+def main():
+    a()
+
+if __name__ == "__main__":
+    main()
+```
+Ejemplo recursividad 2: 
+```python
+from time import sleep
+
+def sumar_uno(a):
+    print (a)
+    a += 1
+    if a  != 100:
+        sumar_uno(a)
+
+def main():
+    sumar_uno(1)
+
+if __name__ == "__main__":
+    main()
+```
+
+La recursividad tiene sus usos, como por ejemplo en la Secuencia de [fibonacci](https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci)
