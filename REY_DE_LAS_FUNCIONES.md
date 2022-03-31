@@ -124,4 +124,28 @@ if __name__ == "__main__":
     main()
 ```
 
-La recursividad tiene sus usos, como por ejemplo en la Secuencia de [fibonacci](https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci)
+La recursividad tiene sus usos, como por ejemplo en la Secuencia de [fibonacci](https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci) en la que en una sequencia de numeros, cada numero se suma con el anterior.
+0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597
+
+Ejemplo recursividad fibonacci:
+```python
+from time import sleep
+MAX_NUM = 30000000
+
+def sumar_uno(a, b):
+    next_num = a + b
+    print("{}, ".format(next_num),end ="")
+    a = b
+    b = next_num
+    if next_num<= MAX_NUM:
+        sumar_uno(a, b)
+
+def main():
+    a = 0
+    b = 1
+    sumar_uno(a, b)
+
+if __name__ == "__main__":
+    main()
+```
+[fibonaccy](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/fibonacci.py)
