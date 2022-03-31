@@ -149,3 +149,33 @@ if __name__ == "__main__":
     main()
 ```
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/fibonaccy.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/fibonacci.py)
+
+Multiples argumentos funcionales. A las funciones les podemos pasar un número indefinido de argumentos, un ejemplo:
+```python
+from time import sleep
+
+def medir_largos(iterable, *args):
+    if args:
+        largos=[len(iterable)]
+        for a in args:
+            largos.append(len(a))
+        return largos
+    return len(iterable)
+
+
+def main():
+    print(medir_largos("hola"))
+    print(medir_largos("hola", "como", "estas"))
+
+if __name__ == "__main__":
+    main()
+```
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/args.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/args.py)
+
+>Notas:
+Iterable es un conjunto de datos que se pueden recorrer con un for, por ejemplo una lista, una tupla.
+Cuando llamamos a la function medir_largos, podemos pasar tantos argumentos como queramos, estos seran recibidos por la function con *args que seran convertidos a tupla.
+Una tupla es como una lista, pero no se puede modificar, no tiene funciones para ordenar, buscar, appends, etc..., es inmutables, es como una version reducida de la lista.
+Las tuplas se usan especialmente en python, porque ocupan menos memoria que las listas.
+
+
