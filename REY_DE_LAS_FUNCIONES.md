@@ -211,4 +211,5 @@ Como ejercicio, hay que hacer un programa con una funcion que calcule una potenc
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py)
 
 ---
-# Un par de ejercicios menos rápidos
+# Un par de ejercicios menos rápido
+
