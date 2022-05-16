@@ -214,6 +214,7 @@ Como ejercicio, hay que hacer un programa con una funcion que calcule una potenc
 # Un par de ejercicios menos rápido
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/fibonaccy.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/fibonacci.py)
+
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py)
 
 ---
