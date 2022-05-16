@@ -206,10 +206,57 @@ def main():
 >Nota:
 La funcion sum() es propia de python.
 
-Como ejercicio, hay que hacer un programa con una funcion que calcule una potencia de un numero que se le pasa por parametro, por defecto si no se pasa el segundo parametro sera el numero del primer parametro elevado a 2, si se pasan los dos paramentros sera el numero elevado al segundo parametro.
+Como ejercicio, hay que hacer un programa con una funcion que calcule una potencia de un número que se le pasa por parametro, por defecto si no se pasa el segundo parametro será el número del primer parametro elevado a 2, si se pasan los dos paramentros sera el numero elevado al segundo parametro.
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py)
 
 ---
 # Un par de ejercicios menos rápido
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/fibonaccy.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/fibonacci.py)
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/potencia.py)
+
+---
+# La clase más aburrida de este módulo
+
+Ejercicio 1: La string más larga
+Crea una funcion que reciba una lista de strings como entrada y te diga cual es la más larga de todas
+
+Ejemplo:
+```shell
+string_mas_larga("hola", "como", "estas")
+
+> "estas"
+```
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/string_mas_larga.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/string_mas_larga.py)
+
+Ejercicio 2: Sumando la lista
+Crea una función que sume una lista de números, no se vale usar la función sum()
+
+Ejemplo:
+```shell
+suma([1, 2, 3, 4, 5])
+
+> 15
+```
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/sumando_una_lista.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/sumando_una_lista.py)
+
+Ejercicio 3: Par o impar
+Crea una función que te de True como resultado si el número pasado como argumento es impar
+
+Ejemplo:
+```shell
+es_impar(3)
+
+> True
+
+es_impar(24)
+
+> False
+```
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/par_o_impar.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/par_o_impar.py)
+
+
 
