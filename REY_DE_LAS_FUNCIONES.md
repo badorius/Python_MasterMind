@@ -259,5 +259,7 @@ es_impar(24)
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/par_o_impar.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/par_o_impar.py)
 
+Ejercicio 4: Pregunta algo
+Crea una función que pregunte al usuario si esta seguro o no, y devuelva los valores "True" o "False" dependiendo de si el usuario está seguro.
 
-
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/estas_seguro.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/estas_seguro.py)
