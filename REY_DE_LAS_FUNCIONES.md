@@ -263,3 +263,7 @@ Ejercicio 4: Pregunta algo
 Crea una función que pregunte al usuario si esta seguro o no, y devuelva los valores "True" o "False" dependiendo de si el usuario está seguro.
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/estas_seguro.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/estas_seguro.py)
+
+Ejercicio 5: A mayus
+
+Crea una función que convierta toda una string en mayusculas, no vale usar el método upper()
