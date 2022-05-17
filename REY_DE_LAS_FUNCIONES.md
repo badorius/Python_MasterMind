@@ -267,3 +267,5 @@ Crea una función que pregunte al usuario si esta seguro o no, y devuelva los va
 Ejercicio 5: A mayus
 
 Crea una función que convierta toda una string en mayusculas, no vale usar el método upper()
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/mayus.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/mayus.py)
