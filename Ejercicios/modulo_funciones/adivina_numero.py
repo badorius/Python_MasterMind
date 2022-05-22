@@ -8,12 +8,11 @@ def check_minor_major(usernumber, pcnumber):
         print("El numero introducideo es superior, intente de nuevo")
 
 def adivina(pcnumber):
-    usernumber = input("Adivina un número del 1 al 100: ")
+    usernumber = None
 
-    while usernumber != pcnumber or not usernumber.isnumeric():
-        usernumber=input("Adivina un número del 1 al 100: ")
-        if usernumber.isnumeric():
-            check_minor_major(int(usernumber), int(pcnumber))
+    while usernumber != pcnumber:
+        usernumber = int(input("Adivina un número del 1 al 100: "))
+        check_minor_major(usernumber, pcnumber)
 
     print(" {} = {} Has acertado!!!".format(usernumber, pcnumber))
 
