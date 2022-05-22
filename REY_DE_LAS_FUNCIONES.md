@@ -269,3 +269,9 @@ Ejercicio 5: A mayus
 Crea una función que convierta toda una string en mayusculas, no vale usar el método upper()
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/mayus.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/mayus.py)
+
+Ejercicio 6: Adivina el número
+
+Crea una función que reciba como argumento un número del 1 al 100 a adivinar y que le pregunte al usuario que adivine el número. El código se ejecutará hasta que el usuario adivine.
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/adivina_numero.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/adivina_numero.py)
