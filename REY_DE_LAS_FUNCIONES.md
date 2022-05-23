@@ -275,3 +275,9 @@ Ejercicio 6: Adivina el número
 Crea una función que reciba como argumento un número del 1 al 100 a adivinar y que le pregunte al usuario que adivine el número. El código se ejecutará hasta que el usuario adivine.
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/adivina_numero.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/adivina_numero.py)
+
+Ejercicio 7: Lista de la compra
+
+Crea una función que dada una lista de la compra definida fuera de la función, permita al usuario añadir un nuevo item asegurandose que no exista anteriormente en la lista.
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lista_compra.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lista_compra.py)
