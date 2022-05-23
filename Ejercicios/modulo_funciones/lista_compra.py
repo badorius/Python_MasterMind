@@ -36,11 +36,11 @@ def input_user_product():
 def create_list_cart():
     product_quantity = 0
     cart = []
+
     for producto in productos:
         product_price = randint(1, 20)
-        index = productos.index(producto)
-        cart.append(shopping_cart(producto, product_quantity, product_price))
-        print (producto, product_quantity, product_price)
+        cart.append( shopping_cart(producto, product_quantity, product_price) )
+
         return cart
 
 def add_shopping_cart(user_product):
