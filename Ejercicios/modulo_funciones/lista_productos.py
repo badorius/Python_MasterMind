@@ -1,8 +1,3 @@
-from random import randint
-
-products = list()
-shopping_cart = list()
-
 productos = [
 'Judías verdes',
 'Acelgas',

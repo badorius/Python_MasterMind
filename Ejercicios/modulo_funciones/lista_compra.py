@@ -1,13 +1,5 @@
-from lista_productos import productos, shopping_cart
+from lista_productos import productos
 from random import randint
-
-
-class shopping_cart:
-    def __init__(self, product, items, price):
-        self.product = product
-        self.items = items
-        self.price = price
-
 
 # Function to print title menu
 def print_titulo():
@@ -31,20 +23,13 @@ def input_user_product():
 
     return int(usernumber)
 
+# Add product to shopping cart list
+def add_shopping_cart(cart, user_product):
+    user_exit = len(productos)-1
+    if user_product != user_exit:
+        cart.append(productos[user_product])
 
-# Function create empty list cart
-def create_list_cart():
-    product_quantity = 0
-    cart = []
-
-    for producto in productos:
-        product_price = randint(1, 20)
-        cart.append( shopping_cart(producto, product_quantity, product_price) )
-
-        return cart
-
-def add_shopping_cart(user_product):
-    pass
+    return cart
 
 
 def lista_compra():
@@ -71,17 +56,18 @@ def lista_compra():
 
 def main():
     user_product = None
-    cart = create_list_cart()
+    user_exit = len(productos)-1
+    cart = []
 
-    while user_product != len(productos)-1:
+    while user_product != user_exit:
 
         print_titulo()
         print_products()
         user_product = input_user_product()
-        add_shopping_cart(user_product)
+        cart = add_shopping_cart(cart, user_product)
 
-    for obj in cart:
-        print(obj.product, obj.items, obj.price)
+    for i in cart:
+        print(i)
     #lista_compra()
 
 if __name__ == "__main__":
