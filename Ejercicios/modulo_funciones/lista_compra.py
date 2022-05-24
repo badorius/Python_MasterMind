@@ -1,5 +1,15 @@
 from lista_productos import productos
+import os
 from random import randint
+
+
+# FUNC BORRAR PANTALLA
+def borrarpantalla():
+    if os.name == "posix":
+        os.system ("clear")
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        os.system ("cls")
+
 
 # Function to print title menu
 def print_titulo():
@@ -9,10 +19,33 @@ def print_titulo():
 
 
 # Function print list of products on products list with index number
-def print_products():
+def print_products(cart):
+    default_space = 25
+
     for producto in productos:
         index = productos.index(producto)
-        print("[ {} ] {}".format (index,producto))
+        print_space = len("[ {} ] {}".format (index, producto))
+        res_space = default_space - print_space
+
+        if index %2 == 1:
+            if producto in cart:
+                print_space = len("[ X ] {}".format(producto))
+                res_space = default_space - print_space
+                print("[ X ] {}".format (producto), end='')
+                print(" " * res_space, end='')
+            else:
+                print("[ {} ] {}".format (index, producto), end='')
+                print(" " * res_space, end='')
+
+        elif index %2 == 0:
+            if producto in cart:
+                print_space = len("[ X ] {}".format(producto))
+                res_space = default_space - print_space
+                print("[ X ] {}".format (producto), end='')
+                print(" " * res_space)
+            else:
+                print("[ {} ] {}".format (index, producto), end='')
+                print(" " * res_space)
 
 
 # Function ask for user product number
@@ -23,36 +56,16 @@ def input_user_product():
 
     return int(usernumber)
 
+
 # Add product to shopping cart list
 def add_shopping_cart(cart, user_product):
     user_exit = len(productos)-1
-    if user_product != user_exit:
+    if productos[user_product] in cart:
+        input("Ta tienes {} en la lista de la compra!, selecciona otro producto. [ENTER] para continuar.".format(productos[user_product]))
+    elif user_product != user_exit:
         cart.append(productos[user_product])
 
     return cart
-
-
-def lista_compra():
-    lista = [],[]
-    opcion = None
-    elemento = None
-
-    while elemento != "Q":
-        elemento = input("Que deseas comprar? ([Q] para salir) >")
-        if elemento in lista:
-            print("{} ya existe en la lista de la compra.".format(elemento))
-        elif elemento != "Q":
-            while opcion not in ["S", "N"]:
-                opcion = input("Seguro que deseas comprar {} [S/N]".format(elemento))
-            if opcion == "S":
-                lista.append(elemento)
-                print("{} ha sido añadido a la lista.".format(elemento))
-                opcion = None
-            else:
-                opcion = None
-    print("La lista de la compra es: ")
-    print (lista)
-    exit()
 
 def main():
     user_product = None
@@ -62,13 +75,15 @@ def main():
     while user_product != user_exit:
 
         print_titulo()
-        print_products()
+        print_products(cart)
         user_product = input_user_product()
         cart = add_shopping_cart(cart, user_product)
+        borrarpantalla()
 
+    print_titulo()
     for i in cart:
         print(i)
-    #lista_compra()
+
 
 if __name__ == "__main__":
     main()
