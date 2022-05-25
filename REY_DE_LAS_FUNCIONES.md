@@ -349,10 +349,19 @@ Notas del ejercicio:
 ```python
 lista_compra = a.read().split("\n")
 ```
-En el ejercicio debemos comprobar si el fichero a cargar de lista existe, ya que no si no existe, el programa dará error, esto es una excepción a controlar y se realizará de la siguiente forma:
-
+En el ejercicio debemos comprobar si el fichero a cargar de lista existe, ya que no si no existe, el programa dará error, en este caso debemos controlar este error con:
+```python
+    if input("Quieres cargar la última lista de la compra? [S/N]") == "S":
+        try:
+            with open(ARCHIVO_LISTA, "r") as a:
+                lista_compra = a.read().split("\n")
+        except FileNotFoundError:
+            print("Archivo de la compra no encontrado!")
+```
+En este caso indicamos el tipo de excepcion ```FileNotFoundError```, podriamos poner sencillamente ```Exception``` pero no seria tan limpio.
 
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_excepciones.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_excepciones.py)
 
 
+ 
