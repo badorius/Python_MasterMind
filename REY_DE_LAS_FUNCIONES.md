@@ -385,3 +385,4 @@ Ejemplo fichero binario aleatorio:
 ---
 
 # H4X0RRSCRIPT - Espiando el historial de Google Chrome
+
