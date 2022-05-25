@@ -386,3 +386,24 @@ Ejemplo fichero binario aleatorio:
 
 # H4X0RRSCRIPT - Espiando el historial de Google Chrome
 
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_chrome.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_chrome.py)
+
+En este ejercicio importaremos las siguientes librerias:
+- import os -> Para gestionar ficheros del OS
+- from time import sleep -> Dejar sleeps en while
+- from random import randrange -> buscar un numero de horas o segundos aleatorio para ejectuar el script
+- from pathlib import Path -> Buscaremos el home del usuario con Path.home
+- import sqlite3 -> Lanzaremos consultas sql al fichero de historial del chrome.
+
+La parte de codigo donde realizamos la conexon sqlite:
+```python
+            connection = sqlite3.connect(history_path)
+            cursor = connection.cursor() # Establece el objecto de conexion
+            cursor.execute("SELECT title, last_visit_time, url FROM urls ORDER BY last_visit_time DESC")
+            urls = cursor.fetchall() # Hacemos un fetch del resultado de la consulta guardando este en una variable
+            connection.close()
+```
+
+---
+
+# H4X0RRSCRIPT - Regex y sus usos para el mal
