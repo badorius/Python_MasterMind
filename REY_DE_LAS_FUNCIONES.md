@@ -298,6 +298,8 @@ Ejemplo lista de la compra escribiendo en un fichero de sistema:
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura.py)
 
+---
+
 # Ahora tú:
 
 Ejercicio 1: Externalizar guardado
@@ -326,6 +328,8 @@ while item_elegido.lower() not in items_del_supermercado and item_elegido != SAL
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_ejercicio_1_2_3.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_ejercicio_1_2_3.py)
 
+---
+
 # Trabajando con listas y funciones 
 Notas importantes del ejercicio:
 - Volveremos a convertir el input del usuario a lower con ```input_usuario.lower()```
@@ -342,6 +346,8 @@ for a in lista_compra:
 - Cuando pasamos una variable o un valor a una función, ese valor solo existe en la función, si se altera en la función deberíamos hacer un return para que main tenga el valor alterado, pero con las listas por ejemplo, no és necesario ya que cuando pasamos una lista a una función, python realmente le pasa el punto de memória a la lista, con lo que si altera algún valor, lo hace directamente sobre la dirección de memória donde está lista, con lo que no hay que devolver la lista, ya ha quedado alterada desde la función al trabajar directamente con el puntero de memória.
 - 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_listas_y_funciones.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_listas_y_funciones.py)
+
+---
 
 # Gestionando excepciones
 Notas del ejercicio:
