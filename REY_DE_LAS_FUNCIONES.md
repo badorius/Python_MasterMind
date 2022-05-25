@@ -281,3 +281,47 @@ Ejercicio 7: Lista de la compra
 Crea una función que dada una lista de la compra definida fuera de la función, permita al usuario añadir un nuevo item asegurandose que no exista anteriormente en la lista.
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lista_compra.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lista_compra.py)
+
+---
+
+# Compras funcionales
+
+En el próximo ejercicio veremos como escribir en un fichero de texto con open. Destacar que cuando abrimos el fichero, lo podemos abrir en modo lectura (r), escritura (w), append (a), este último lo utilizaríamos para no borrar el contenido ya existente, como un >> vs a un >
+Finalmente cerramos el fichero:
+```python
+    a = open("compra.txt", "w")
+    a.write("\n".join(lista_compra))
+    a.close()
+```
+
+Ejemplo lista de la compra escribiendo en un fichero de sistema:
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura.py)
+
+# Ahora tú:
+
+Ejercicio 1: Externalizar guardado
+Mueve el código de guardar el archivo a una función externa
+
+Ejercicio 2: Lista de productos fija
+De ahora en adelante el usuario solo podrá introducir los productos que estén en una lista especifica. Por ejemplo si nuestra lista tiene "Pan", "Pollo" y "Pipas", el usuario solo podrá meter en la lista de la compra uno de esos 3 items.
+Lo haremos comprobando que el texto introducido por el usuario está en la lista de productos preestablecidos. Si no lo está le daremos un mensaje avisándole que ese producto no está disponible para meter en la lista.
+
+Ejercicio 3: Mostrar la lista
+Implementa el comando "LISTA" para ver los items disponibles que se pueden añadir a la lista, así el usuario sabe que puede meter en su lista de la compra y que no.
+
+Notas de los ejercicios:
+- En python podemos abreviar el abrir y cerrar ficheros de la siguiente forma:
+```python
+    with open(nombre_fichero + ".txt", "w") as mi_archivo:
+        mi_archivo.write("\n".join(lista_compra))
+```
+Con esto abrimos, escribimos y cerramos el fichero.
+
+- Para convertir una variable en minúsculas, lo hacemos con .lower:
+```python
+while item_elegido.lower() not in items_del_supermercado and item_elegido != SALIDA: 
+```
+
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_ejercicio_1_2_3.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_ejercicio_1_2_3.py)
