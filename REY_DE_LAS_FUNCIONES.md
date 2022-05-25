@@ -373,5 +373,15 @@ En este caso indicamos el tipo de excepcion ```FileNotFoundError```, podriamos p
 
 # H4X0RRSCRIPT
 
+Vamos a crear un fichero en el escritorio del OS utilizando la librería os function os.getlogin() y asi conseguir el login id:
 
- 
+Ejemplo fichero de texto:
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript.py)
+
+Ejemplo fichero binario aleatorio:
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript.py)
+
+
+---
+
+# H4X0RRSCRIPT - Espiando el historial de Google Chrome
