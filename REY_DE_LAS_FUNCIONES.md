@@ -363,5 +363,9 @@ En este caso indicamos el tipo de excepcion ```FileNotFoundError```, podriamos p
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_excepciones.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/lectura_escritura_excepciones.py)
 
+---
+
+# H4X0RRSCRIPT
+
 
  
