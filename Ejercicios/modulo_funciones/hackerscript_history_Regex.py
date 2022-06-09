@@ -38,7 +38,7 @@ def get_chrome_history():
             sleep(3)
 
 
-def check_history_and_scare_user(hacker_file, chrome_history):
+def check_twitter_profiles_and_scare_user(hacker_file, chrome_history):
     maxhist = 1
     profiles_visited = []
     url_exceptions = ["home", "notifications", "explore", "login"]
@@ -56,7 +56,7 @@ def main():
     delay_action()
     hacker_file = create_hacker_file()
     chrome_history = get_chrome_history()
-    check_history_and_scare_user(hacker_file, chrome_history)
+    check_twitter_profiles_and_scare_user(hacker_file, chrome_history)
 
 
 
