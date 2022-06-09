@@ -465,4 +465,6 @@ def check_history_and_scare_user(hacker_file, chrome_history):
     hacker_file.write("He visto que has estado husmeando en los perfiles de {}...".format(", ".join(profiles_visited)))
 ```
 
+Ejercicio completo:
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_Regex.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_Regex.py)
 
