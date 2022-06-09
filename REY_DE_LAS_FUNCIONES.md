@@ -407,4 +407,12 @@ La parte de codigo donde realizamos la conexon sqlite:
 ---
 
 # H4X0RRSCRIPT - Regex y sus usos para el mal
+Con el fin de filtrar las urls deseadas (por ejemplo las de twitter) utilizaremos las regular expresions, 
+En [https://pythex.org/](https://pythex.org/) encontraremos un tester de regular expressions. 
+
+En el siguiente ejemplo buscamos la string https://twitter.com/ en el texto https://twitter.com/nategentile7 y nos muestra el resultado:
+
+![pythex_ex](IMG/pythex_ex.jpg)
+
+
 

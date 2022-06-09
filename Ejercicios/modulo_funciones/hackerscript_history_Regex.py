@@ -38,8 +38,8 @@ def get_chrome_history():
 
 def check_history_and_scare_user(hacker_file, chrome_history):
     maxhist = 1
-    for item in chrome_histor:
-        item[2]
+    for item in chrome_history:
+        print(item[2])
 
 
 def main():
