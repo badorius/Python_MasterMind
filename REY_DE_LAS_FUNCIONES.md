@@ -415,4 +415,6 @@ En el siguiente ejemplo buscamos la string https://twitter.com/ en el texto http
 ![pythex_ex](IMG/pythex_ex.jpg)
 
 
+https://twitter.com/[A-Za-z0-9]+
+
 
