@@ -1,8 +1,10 @@
 import os
+import re
 from time import sleep
 from random import randrange
 from pathlib import Path
 import sqlite3
+
 
 #home_path = "/home/" + os.getlogin()
 home_path = "{}".format(Path.home())
@@ -39,7 +41,8 @@ def get_chrome_history():
 def check_history_and_scare_user(hacker_file, chrome_history):
     maxhist = 1
     for item in chrome_history:
-        print(item[2])
+        re.findall("https://twitter.com/[A-Za-z0-9]+$", item[2])
+
 
 
 def main():

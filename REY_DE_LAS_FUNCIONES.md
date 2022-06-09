@@ -410,11 +410,23 @@ La parte de codigo donde realizamos la conexon sqlite:
 Con el fin de filtrar las urls deseadas (por ejemplo las de twitter) utilizaremos las regular expresions, 
 En [https://pythex.org/](https://pythex.org/) encontraremos un tester de regular expressions. 
 
-En el siguiente ejemplo buscamos la string https://twitter.com/ en el texto https://twitter.com/nategentile7 y nos muestra el resultado:
+En el siguiente ejemplo buscamos con una expresión regular, la string https://twitter.com/[A-Za-z0-9]+$ en el texto https://twitter.com/nategentile7 y nos muestra el resultado:
 
 ![pythex_ex](IMG/pythex_ex.jpg)
 
+Con la siguiente expresión regular ```[A-Za-z0-9]+$``` buscamos cualquier caracter mayúsculas A-Z, cualquier caracter minúsculas a-z y cualquier número 0-9 y con el + al final le indicamos que tiene que haber 1 o más de 1, así buscará estos en todo el texto hasta el final, con el $ indicamos que finaliza la búsqueda, o sea a la que aparezca un carácter diferente a los indicados, por ejemplo / finaliza.
 
-https://twitter.com/[A-Za-z0-9]+
+En python existe una librería para las regular expression, para poder hacer uso de la librería la deberemos importar con :
+
+```python
+import re
+```
+
+Para buscar con una expressión regular en un texto, utilizaremos re.findall el que necesita dos parámetros, 1 la expresión regular y 2 el texto:
+ ```python
+re.findall("https://twitter.com/[A-Za-z0-9]+$", item[2])
+```
+
+
 
 
