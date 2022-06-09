@@ -427,6 +427,42 @@ Para buscar con una expressión regular en un texto, utilizaremos re.findall el 
 re.findall("https://twitter.com/[A-Za-z0-9]+$", item[2])
 ```
 
+Ahora vamos a guardar el resultado en una variable que si tiene valor, retornará la función:
+```python
+    for item in chrome_history:
+        results = re.findall("https://twitter.com/([A-Za-z0-9]+)$", item[2])
+        if results:
+            print(results[0])
+```
 
+Para que nos devuleva solo el nombre del perfil sin el "https://twitter.com/" capturaremos el string que buscamos con (), con lo que cambiaremos "https://twitter.com/[A-Za-z0-9]+$" por "https://twitter.com/([A-Za-z0-9])+$"
+
+Ahora nos muestra solo el string del perfil tal y como queríamos:
+```shell
+Durmiendo 3 Segundos...
+home
+notifications
+explore
+login
+nineinchnails
+nategentile7
+
+Process finished with exit code 0
+```
+
+Pero como podemos ver, tenemos algunos valores que no son perfiles, como home, notifications, etc... para ello lo haremos de la siguiente forma::
+
+```python
+def check_history_and_scare_user(hacker_file, chrome_history):
+    maxhist = 1
+    profiles_visited = []
+    url_exceptions = ["home", "notifications", "explore", "login"]
+
+    for item in chrome_history:
+        results = re.findall("https://twitter.com/([A-Za-z0-9]+)$", item[2])
+        if results and results[0] not in url_exceptions:
+            profiles_visited.append(results[0])
+    hacker_file.write("He visto que has estado husmeando en los perfiles de {}...".format(", ".join(profiles_visited)))
+```
 
 
