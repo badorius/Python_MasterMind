@@ -407,3 +407,4 @@ La parte de codigo donde realizamos la conexon sqlite:
 ---
 
 # H4X0RRSCRIPT - Regex y sus usos para el mal
+
