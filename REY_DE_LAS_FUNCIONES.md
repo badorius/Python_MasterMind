@@ -497,3 +497,27 @@ def check_bank_account(hacker_file, chrome_history):
 
 ---
 # H4X0RRSCRIPT - Se también a que juegas PT.1
+
+Ahora jugaremos con las rutas de OS de juegos instalados en steam, con lo siguiente function:
+
+```python
+def check_steam_games(hacker_file):
+    steam_path = home_path + "/.local/share/Steam/steamapps/common/*"
+    if os.path.exists(steam_path):
+        games = []
+        game_paths = glob.glob(steam_path)
+        game_paths.sort(key=os.path.getmtime, reverse=True)
+        for game_path in game_paths:
+            games.append(game_path.split("/")[-1])
+        hacker_file.write("He visto que has estado jugando ultimamente a {}".format(", ".join(games[:3])))
+    else:
+        pass
+```
+
+Notas:
+- Importamos y utilizamos glob para obtener la ruta absoluta de cada uno de los directorios ```game_paths = glob.glob(steam_path)```
+- Ordenamos con el atributo sort, pasándole como parameters: ```game_paths.sort(key=os.path.getmtime, reverse=True)```
+- Hacemos un append en games, con split de "/" quedándonos con el utlimo campo [-1]:  ```games.append(game_path.split("/")[-1])```
+- Escribimos en hacker_file haciendo un .join de los utlimos 3 resultados, el join nos sirve para juntar estos resultados, con la coma ", " del format: ```hacker_file.write("He visto que has estado jugando ultimamente a {}".format(", ".join(games[:3])))```
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank_steam.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank_steam.py)
