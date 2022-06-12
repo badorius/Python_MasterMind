@@ -521,3 +521,20 @@ Notas:
 - Escribimos en hacker_file haciendo un .join de los utlimos 3 resultados, el join nos sirve para juntar estos resultados, con la coma ", " del format: ```hacker_file.write("He visto que has estado jugando ultimamente a {}".format(", ".join(games[:3])))```
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank_steam.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank_steam.py)
+
+---
+# H4X0RRSCRIPT - Convirtiendo a .EXE
+
+Con py2exe convertiremos este programa en un .exe standalone ejecutable:
+
+[https://pypi.org/project/py2exe/](https://pypi.org/project/py2exe/)
+
+Con python freeze.py haremos lo equivalente para linux/unix:
+
+[https://pypi.org/project/cx-Freeze/](https://pypi.org/project/cx-Freeze/)
+
+En archlinux podemos instalar ```sudo pacman -S python-cx-freeze```
+O con  ```pip install cx-Freeze```
+
+Podemos crearlo de la siguiente forma: ```$HOME/.local/bin/cxfreeze ./hackerscript_history_twitter_youtube_facebook_bank_steam.py```
+Esto nos dejara el binario en: ```build/exe.linux-x86_64-3.10/hackerscript_history_twitter_youtube_facebook_bank_steam```
