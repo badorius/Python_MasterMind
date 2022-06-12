@@ -538,3 +538,21 @@ O con  ```pip install cx-Freeze```
 
 Podemos crearlo de la siguiente forma: ```$HOME/.local/bin/cxfreeze ./hackerscript_history_twitter_youtube_facebook_bank_steam.py```
 Esto nos dejara el binario en: ```build/exe.linux-x86_64-3.10/hackerscript_history_twitter_youtube_facebook_bank_steam```
+
+---
+# H4X0RRSCRIPT - El historial-temporal
+Con el fin de no utilizar el fichero historial original de chrome, trabajaremos con uno temporal de la siguiente forma:
+
+```python
+ori_history_path = "/home/" + os.getlogin() + "/.config/google-chrome/Default/History"
+history_path = "/home/" + os.getlogin() + "/.config/google-chrome/Default/Historytemp"
+
+
+def copy_history():
+    copyfile(ori_history_path, history_path)
+```
+
+Notas:
+- Con la libreria ```from shutil import copyfile```, podremos hacer una copia del fichero historial y trabajar con esta copia.
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank_steam.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank_steam.py)

