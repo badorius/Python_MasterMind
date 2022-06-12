@@ -476,3 +476,24 @@ Ejercicio completo funciones facebook, youtube, tiwtter:
 ---
 # H4X0RRSCRIPT - Se en que banco tienes tu dinero...
 
+Add function history bank:
+
+```python
+def check_bank_account(hacker_file, chrome_history):
+    his_bank = None
+    banks = ["BBVA", "Caixa Bank", "Santander", "Bankia", "Sabadell", "Kutxabank", "Abanca", "Unicaja", "Ibercaja"]
+    for item in chrome_history:
+        for b in banks:
+            if b.lower() in item[0].lower():
+                his_bank = b.lower()
+                break
+        if his_bank:
+            break
+    hacker_file.write("Ademas veo que tu banco es el {}".format(his_bank))
+
+```
+
+[https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank.py)
+
+---
+# H4X0RRSCRIPT - Se también a que juegas PT.1
