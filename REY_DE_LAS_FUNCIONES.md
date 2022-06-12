@@ -472,3 +472,7 @@ Ejercicio completo twitter:
 Ejercicio completo funciones facebook, youtube, tiwtter:
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook.py)
+
+---
+# H4X0RRSCRIPT - Se en que banco tienes tu dinero...
+
