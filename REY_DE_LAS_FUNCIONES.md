@@ -560,4 +560,5 @@ Notas:
 ---
 # Sniper Bot - Un bot para comprar por ti
 
-
+En este capítulo, realizaremos un sniper bot para comprar tarjetas gráficas. 
+Existen dos librerías para navegar por la web, 
