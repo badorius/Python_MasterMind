@@ -556,3 +556,8 @@ Notas:
 - Con la libreria ```from shutil import copyfile```, podremos hacer una copia del fichero historial y trabajar con esta copia.
 
 [https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank_steam.py](https://github.com/badorius/curso-python/blob/master/Ejercicios/modulo_funciones/hackerscript_history_twitter_youtube_facebook_bank_steam.py)
+
+---
+# Sniper Bot - Un bot para comprar por ti
+
+
