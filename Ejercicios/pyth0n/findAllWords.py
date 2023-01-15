@@ -1,8 +1,11 @@
+import string
+
 import requests
 import re
 from bs4 import BeautifulSoup
 import click
 import os
+import random
 
 def get_html_of(url):
     resp = requests.get(url)
@@ -16,7 +19,6 @@ def get_html_of(url):
 
 def count_occurrences_in(word_list, min_length):
     word_count = {}
-
 
     for word in word_list:
         if len(word) < min_length:
@@ -36,14 +38,14 @@ def get_all_words_from(url):
     return re.findall(r'\w+', raw_text)
 
 
-
 def get_top_words_from(all_words, min_lenght):
     occurrences = count_occurrences_in(all_words, min_lenght)
     return sorted(occurrences.items(), key=lambda item: item[1], reverse=True)
 
+
 def save_word(word, output):
     with open(output, 'a') as my_file:
-    	my_file.write(word + "\n")
+        my_file.write(word + "\n")
 
 
 def max_num_words(number_words, top_words):
@@ -55,15 +57,24 @@ def max_num_words(number_words, top_words):
     return number_words 
 
 
+def mutation(word):
+    print(word.capitalize())
+    print(word.lower())
+    print(word.upper())
+    print(word + str(random.randint(1970, 2023)) + str(''.join(random.choices(string.punctuation))))
+
+
 def output_words(output, number_words, top_words):
     if output != 'none' and os.path.exists(output):
         os.remove(output)
         
     for i in range(number_words):
         if output != 'none':
-            save_word(top_words[i][0], output )
+            save_word(top_words[i][0], output)
         else:
             print(top_words[i][0])
+
+        mutation(top_words[i][0])
 
 
 @click.command()
