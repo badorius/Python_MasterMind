@@ -64,6 +64,7 @@ def mutation(word):
     print(word + str(random.randint(1970, 2023)) + str(''.join(random.choices(string.punctuation))))
 
 
+
 def output_words(output, number_words, top_words):
     if output != 'none' and os.path.exists(output):
         os.remove(output)
@@ -75,18 +76,37 @@ def output_words(output, number_words, top_words):
             print(top_words[i][0])
 
         mutation(top_words[i][0])
+        
 
+def find_url(url):
+    reqs = requests.get(url)
+    soup = BeautifulSoup(reqs.text, 'html.parser')
+
+    urls = []
+    for link in soup.find_all('a'):
+        #print(link.get('href'))
+        urls.append(link.get('href'))
+
+    return urls
 
 @click.command()
 @click.option('--url', '-u', prompt='Web URL', help='URL of webpage to extract from.')
 @click.option('--length', '-l', default=0, help='Minimum word length (default: 0, no limit).')
 @click.option('--output', '-o', default='none', help='Output file to print to instead of the console.')
-def main(url, length, output):
-    the_words = get_all_words_from(url)
-    top_words = get_top_words_from(the_words, length)
+@click.option('--depth', '-d',  default='1', help='Grab not only words also URLs on the webpage(s), and add them to a list of number of pages to crawl next (default=1).')
+def main(url, length, output, depth):
 
-    number_words=max_num_words(10, top_words)
-    output_words(output, number_words, top_words)
+    if depth != 'none':
+        urls = find_url(url)
+
+    for all_urls in urls:
+        url=all_urls
+        print(all_urls)
+        the_words = get_all_words_from(url)
+        top_words = get_top_words_from(the_words, length)
+
+        number_words=max_num_words(10, top_words)
+        output_words(output, number_words, top_words)
 
 
 if __name__ == '__main__':
