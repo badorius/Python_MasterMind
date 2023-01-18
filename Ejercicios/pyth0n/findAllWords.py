@@ -84,7 +84,7 @@ def find_url(url):
 
     urls = []
     for link in soup.find_all('a'):
-        #print(link.get('href'))
+        print(re.findall(r'*/$', str(link.get('href'))))
         urls.append(link.get('href'))
 
     return urls
