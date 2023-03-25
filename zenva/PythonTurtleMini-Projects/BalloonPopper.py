@@ -1,5 +1,5 @@
 from turtle import *
-from random import randint
+from random import *
 
 diameter = 40
 pop_diameter = 100
