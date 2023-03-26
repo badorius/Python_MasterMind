@@ -1,11 +1,11 @@
 import string
-
 import requests
 import re
 from bs4 import BeautifulSoup
 import click
 import os
 import random
+
 
 def get_html_of(url):
     resp = requests.get(url)
