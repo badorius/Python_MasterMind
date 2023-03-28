@@ -26,3 +26,4 @@ game_object = GameObject("Knife", "Some appearance", "Some feel", "Some smell")
 game_object.name = "Spoon"
 # And call out for its methods as seen below
 print(game_object.sniff())
+
