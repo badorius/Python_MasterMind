@@ -54,38 +54,41 @@ class Game:
     # Returns a list with all the objects we're going to have in our escape room
     def create_objects(self):
         return [
-          GameObject(
-            "Sweater",
-            "It's a blue sweater that had the number 12 switched on it.",
-            "Someone has unstitched the second number, leaving only the 1.",
-            "The sweater smells of laundry detergent."),
-          GameObject(
-            "Chair",
-            "It's a wooden chair with only 3 legs.",
-            "Someone had deliberately snapped off one of the legs.",
-            "It smells like old wood."),
-          GameObject(
-            "Journal",
-            "The final entry states that time should be hours then minutes then seconds (H-M-S).",
-            "The cover is worn and several pages are missing.",
-            "It smells like musty leather."),
-          GameObject(
-            "Bowl of soup",
-            "It appears to be tomato soup.",
-            "It has cooled down to room temperature.",
-            "You detect 7 different herbs and spices."),
-          GameObject(
-            "Clock",
-            "The hour hand is pointing towards the soup, the minute hand towards the chair, and the second hand towards the sweater.",
-            "The battery compartment is open and empty.",
-            "It smells of plastic."),
+            GameObject(
+                "Sweater",
+                "It's a blue sweater that had the number 12 switched on it.",
+                "Someone has unstitched the second number, leaving only the 1.",
+                "The sweater smells of laundry detergent."),
+            GameObject(
+                "Chair",
+                "It's a wooden chair with only 3 legs.",
+                "Someone had deliberately snapped off one of the legs.",
+                "It smells like old wood."),
+            GameObject(
+                "Journal",
+                "The final entry states that time should be hours then minutes then seconds (H-M-S).",
+                "The cover is worn and several pages are missing.",
+                "It smells like musty leather."),
+            GameObject(
+                "Bowl of soup",
+                "It appears to be tomato soup.",
+                "It has cooled down to room temperature.",
+                "You detect 7 different herbs and spices."),
+            GameObject(
+                "Clock",
+                "The hour hand is pointing towards the soup, the minute hand towards the chair, and the second hand towards the sweater.",
+                "The battery compartment is open and empty.",
+                "It smells of plastic."),
         ]
 
     # For each turn, we want to present the prompt to the player
     def take_turn(self):
         prompt = self.get_room_prompt()
         selection = int(input(prompt))
-        self.select_object(selection - 1)
+        # Only takes the selection prompted if it's a valid input
+        if selection >= 1 and selection <= 5:
+            self.select_object(selection - 1)
+            self.take_turn()
 
     # Shows the option to enter the code or interact further with the objects in the room
     def get_room_prompt(self):
@@ -102,11 +105,21 @@ class Game:
         selected_object = self.room.game_objects[index]
         prompt = self.get_object_interaction_string(selected_object.name)
         interaction = input(prompt)
-        print(interaction)
+        clue = self.interact_with_object(selected_object, interaction)
+        print(clue)
 
     # Displays message to get type of interaction with object
     def get_object_interaction_string(self, name):
         return f"How do you want to interact with the {name}?\n1. Look\n2. Touch\n3. Smell\n"
+
+    # Shows the interaction message to the player
+    def interact_with_object(self, object, interaction):
+        if interaction == "1":
+            return object.look()
+        elif interaction == "2":
+            return object.touch()
+        else:
+            return object.sniff()
 
 
 # Here we're creating an object of our Game class
