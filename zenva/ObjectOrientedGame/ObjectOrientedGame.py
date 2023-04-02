@@ -54,31 +54,31 @@ class Game:
     # Returns a list with all the objects we're going to have in our escape room
     def create_objects(self):
         return [
-            GameObject(
-                "Sweater",
-                "It's a blue sweater that had the number 12 switched on it.",
-                "Someone has unstitched the second number, leaving only the 1.",
-                "The sweater smells of laundry detergent."),
-            GameObject(
-                "Chair",
-                "It's a wooden chair with only 3 legs.",
-                "Someone had deliberately snapped off one of the legs.",
-                "It smells like old wood."),
-            GameObject(
-                "Journal",
-                "The final entry states that time should be hours then minutes then seconds (H-M-S).",
-                "The cover is worn and several pages are missing.",
-                "It smells like musty leather."),
-            GameObject(
-                "Bowl of soup",
-                "It appears to be tomato soup.",
-                "It has cooled down to room temperature.",
-                "You detect 7 different herbs and spices."),
-            GameObject(
-                "Clock",
-                "The hour hand is pointing towards the soup, the minute hand towards the chair, and the second hand towards the sweater.",
-                "The battery compartment is open and empty.",
-                "It smells of plastic."),
+          GameObject(
+            "Sweater",
+            "It's a blue sweater that had the number 12 switched on it.",
+            "Someone has unstitched the second number, leaving only the 1.",
+            "The sweater smells of laundry detergent."),
+          GameObject(
+            "Chair",
+            "It's a wooden chair with only 3 legs.",
+            "Someone had deliberately snapped off one of the legs.",
+            "It smells like old wood."),
+          GameObject(
+            "Journal",
+            "The final entry states that time should be hours then minutes then seconds (H-M-S).",
+            "The cover is worn and several pages are missing.",
+            "It smells like musty leather."),
+          GameObject(
+            "Bowl of soup",
+            "It appears to be tomato soup.",
+            "It has cooled down to room temperature.",
+            "You detect 7 different herbs and spices."),
+          GameObject(
+            "Clock",
+            "The hour hand is pointing towards the soup, the minute hand towards the chair, and the second hand towards the sweater.",
+            "The battery compartment is open and empty.",
+            "It smells of plastic."),
         ]
 
     # For each turn, we want to present the prompt to the player
@@ -89,6 +89,20 @@ class Game:
         if selection >= 1 and selection <= 5:
             self.select_object(selection - 1)
             self.take_turn()
+        else:
+            # If we're in the else branch it means that the player is guessing a code
+            is_code_correct = self.guess_code(selection)
+            if is_code_correct:
+                # If the entered code is correct, the player wins
+                print("Congratulations, you win!")
+            else:
+                # If they have already guessed the code incorrectly 3 times, they lose the game
+                if self.attempts == 3:
+                    print("Game over, you ran out of guesses. Better luck next time!")
+                else:
+                    # If the player still has attempts left, they'll take another turn
+                    print(f"Incorrect, you have used {self.attempts}/3 attempts.\n")
+                    self.take_turn()
 
     # Shows the option to enter the code or interact further with the objects in the room
     def get_room_prompt(self):
@@ -120,6 +134,15 @@ class Game:
             return object.touch()
         else:
             return object.sniff()
+
+    # Compares the code entered to the code of the room
+    def guess_code(self, code):
+        if self.room.check_code(code):
+            return True
+        else:
+            # If the codes don't match, increases attempts variable by 1
+            self.attempts += 1
+            return False
 
 
 # Here we're creating an object of our Game class
